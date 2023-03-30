@@ -98,19 +98,19 @@ slates = {
         '12.4.19': {'day':'sunday', 'slate_id':14, 'winning_score':206.46, 'optimal':247.7}, #week 14 2019
         '12.11.19': {'day':'sunday', 'slate_id':15, 'winning_score':232.00, 'optimal':262.9},#week 15 2019
         '12.18.19': {'day':'sunday', 'slate_id':16, 'winning_score':234.00, 'optimal':267.8},#week 16 2019
-        '17':215.46, #week 1 2020
-        '18':223.60, #week 2 2020
-        '19':214.90, #week 3 2020
-        '20':232.00, #week 4 2020
-        '21':205.00, #week 5 2020
-        '22':208.00, #week 6 2020
-        '23':235.00, #week 7 2020
-        '24':211.24, #week 8 2020
-        '25':201.16, #week 9 2020
-        '26':196.06, #week 10 2020
-        '27':187.96, #week 11 2020
-        '28':230, #week 12 2020
-        '29':220, #week 13 2020
+        '9.9.20': {'day':'sunday', 'slate_id':17, 'winning_score':215.46, 'optimal':239.4},  #week 1 2020
+        '9.16.20': {'day':'sunday', 'slate_id':18, 'winning_score':223.60, 'optimal':246.6}, #week 2 2020
+        '9.23.20': {'day':'sunday', 'slate_id':19, 'winning_score':214.90, 'optimal':250.1}, #week 3 2020
+        '9.30.20': {'day':'sunday', 'slate_id':20, 'winning_score':234.78, 'optimal':242.7}, #week 4 2020
+        '10.7.20': {'day':'sunday', 'slate_id':21, 'winning_score':205.00, 'optimal':235.6}, #week 5 2020
+        '10.14.20': {'day':'sunday', 'slate_id':22, 'winning_score':208.00, 'optimal':235.6},#week 6 2020 (optimal is a guess)
+        '10.21.20': {'day':'sunday', 'slate_id':23, 'winning_score':235.00, 'optimal':275.2},#week 7 2020
+        '10.28.20': {'day':'sunday', 'slate_id':24, 'winning_score':211.24, 'optimal':246.0},#week 8 2020
+        '11.4.20': {'day':'sunday', 'slate_id':25, 'winning_score':201.16, 'optimal':225.5}, #week 9 2020
+        '11.11.20': {'day':'sunday', 'slate_id':26, 'winning_score':196.06, 'optimal':210.6},#week 10 2020
+        '11.18.20': {'day':'sunday', 'slate_id':27, 'winning_score':187.96, 'optimal':211.3},#week 11 2020
+        '11.25.20': {'day':'sunday', 'slate_id':28, 'winning_score':230.00, 'optimal':258.4},#week 12 2020
+        '12.2.20': {'day':'sunday', 'slate_id':29, 'winning_score':220.00, 'optimal':251.5}, #week 13 2020
         '30':220, #week 14 2020 
         '31':199, #week 1 2021
         '32':227, #week 2 2021
