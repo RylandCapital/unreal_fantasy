@@ -127,21 +127,21 @@ slates = {
         '12.1.21': {'day':'sunday', 'slate_id':43, 'winning_score':219.00, 'optimal':235.4}, #week 13 2021 FL: 12/01/21
         '12.8.21': {'day':'sunday', 'slate_id':44, 'winning_score':201.00, 'optimal':225.6}, #week 14 2021 FL: 12/08/21
         '12.15.21': {'day':'sunday', 'slate_id':45, 'winning_score':186.00, 'optimal':205.8},#week 15 2021 FL: 12/15/21
-        '46':221, #week 1 2022 FL: 9/7/22
-        '47':245, #week 2 2022 FL: 9/14/22
-        '48':190, #week 3 2022 FL: 9/21/22
-        '49':228, #week 4 2022 FL: 9/28/22
-        '50':228, #week 5 2022 FL: 10/5/22
-        '51':198, #week 6 2022 FL: 10/12/22  
-        '52':215, #week 7 2022 FL: 10/19/22 
-        '53':246, #week 8 2022 FL: 10/26/22
-        '54':230, #week 9 2022 FL: 11/2/22
-        '55':219, #week 10 2022 FL: 11/9/22 
-        '56':188, #week 11 2022 FL: 11/16/22 
-        '57':199, #week 12 2022 FL: 11/23/22 
-        '58':197, #week 13 2022 FL: 11/30/22 
-        '59':212,  #week 14 2022 FL: 12/7/22
-        '60':198  #week 15 2022 FL: 12/14/22
+        '9.7.22': {'day':'sunday', 'slate_id':46, 'winning_score':221.00, 'optimal':233.1},  #week 1 2022 FL: 9/7/22
+        '9.14.22': {'day':'sunday', 'slate_id':47, 'winning_score':245.00, 'optimal':255.3}, #week 2 2022 FL: 9/14/22
+        '9.21.22': {'day':'sunday', 'slate_id':48, 'winning_score':190.00, 'optimal':233.6}, #week 3 2022 FL: 9/21/22
+        '9.28.22': {'day':'sunday', 'slate_id':49, 'winning_score':221.53, 'optimal':232.7}, #week 4 2022 FL: 9/28/22
+        '10.5.22': {'day':'sunday', 'slate_id':50, 'winning_score':228.03, 'optimal':263.7}, #week 5 2022 FL: 10/5/22
+        '10.12.22': {'day':'sunday', 'slate_id':51, 'winning_score':198.03, 'optimal':223.1},#week 6 2022 FL: 10/12/22  
+        '10.19.22': {'day':'sunday', 'slate_id':52, 'winning_score':215.00, 'optimal':242.3},#week 7 2022 FL: 10/19/22 
+        '10.26.22': {'day':'sunday', 'slate_id':53, 'winning_score':239.88, 'optimal':260.4},#week 8 2022 FL: 10/26/22
+        '11.2.22': {'day':'sunday', 'slate_id':54, 'winning_score':230.00, 'optimal':253.2}, #week 9 2022 FL: 11/2/22
+        '11.9.22': {'day':'sunday', 'slate_id':55, 'winning_score':219.00, 'optimal':243.2}, #week 10 2022 FL: 11/9/22 
+        '11.16.22': {'day':'sunday', 'slate_id':56, 'winning_score':188.00, 'optimal':223.2},#week 11 2022 FL: 11/16/22 
+        '11.23.22': {'day':'sunday', 'slate_id':57, 'winning_score':199.00, 'optimal':217.0},#week 12 2022 FL: 11/23/22 
+        '11.30.22': {'day':'sunday', 'slate_id':58, 'winning_score':197.00, 'optimal':212.6},#week 13 2022 FL: 11/30/22 
+        '12.7.22': {'day':'sunday', 'slate_id':59, 'winning_score':212.00, 'optimal':239.8}, #week 14 2022 FL: 12/7/22
+        '12.14.22': {'day':'sunday', 'slate_id':60, 'winning_score':198.00, 'optimal':223.9},#week 15 2022 FL: 12/14/22
     
     }
 
@@ -150,10 +150,145 @@ slates = {
     'draftkings':{
     
     'nhl':{
+        
+        '1.6.22': {'day':'thursday', 'slate_id':0, 'winning_score':, 'optimal':},
+        '1.8.22': {'day':'saturday', 'slate_id':1, 'winning_score':, 'optimal':},
+        '1.13.22': {'day':'thursday', 'slate_id':2, 'winning_score':, 'optimal':},
+        '1.15.22': {'day':'saturday', 'slate_id':3, 'winning_score':, 'optimal':},
+        '1.20.22': {'day':'thursday', 'slate_id':4, 'winning_score':, 'optimal':},
+        '1.22.22': {'day':'saturday', 'slate_id':5, 'winning_score':, 'optimal':},
+        '1.27.22': {'day':'thursday', 'slate_id':6, 'winning_score':, 'optimal':},
+        '1.29.22': {'day':'saturday', 'slate_id':7, 'winning_score':, 'optimal':},
+        '2.10.22': {'day':'thursday', 'slate_id':8, 'winning_score':, 'optimal':},
+        '2.12.22': {'day':'saturday', 'slate_id':9, 'winning_score':, 'optimal':},
+        '2.17.22': {'day':'thursday', 'slate_id':10, 'winning_score':, 'optimal':},
+        '2.19.22': {'day':'saturday', 'slate_id':11, 'winning_score':, 'optimal':},
+        '2.24.22': {'day':'thursday', 'slate_id':12, 'winning_score':, 'optimal':},
+        '2.26.22': {'day':'saturday', 'slate_id':13, 'winning_score':, 'optimal':},
+        '3.3.22': {'day':'thursday', 'slate_id':14, 'winning_score':, 'optimal':},
+        '3.5.22': {'day':'saturday', 'slate_id':15, 'winning_score':, 'optimal':},
+        '3.10.22': {'day':'thursday', 'slate_id':16, 'winning_score':, 'optimal':},
+        '3.12.22': {'day':'saturday', 'slate_id':17, 'winning_score':, 'optimal':},
+        '3.17.22': {'day':'thursday', 'slate_id':18, 'winning_score':, 'optimal':},
+        '3.19.22': {'day':'saturday', 'slate_id':19, 'winning_score':, 'optimal':},
+        '3.24.22': {'day':'thursday', 'slate_id':20, 'winning_score':, 'optimal':},
+        '3.26.22': {'day':'saturday', 'slate_id':21, 'winning_score':, 'optimal':},
+        '3.31.22': {'day':'thursday', 'slate_id':22, 'winning_score':, 'optimal':},
+        '4.2.22': {'day':'saturday', 'slate_id':23, 'winning_score':, 'optimal':},
+        '4.9.22': {'day':'saturday', 'slate_id':24, 'winning_score':, 'optimal':},
+        '4.14.22': {'day':'thursday', 'slate_id':25, 'winning_score':, 'optimal':},
+        '4.16.22': {'day':'saturday', 'slate_id':26, 'winning_score':, 'optimal':},
+        '10.20.22': {'day':'thursday', 'slate_id':29, 'winning_score':, 'optimal':},
+        '10.22.22': {'day':'saturday', 'slate_id':30, 'winning_score':, 'optimal':}, 
+        '10.27.22': {'day':'thursday', 'slate_id':31, 'winning_score':, 'optimal':},  
+        '10.29.22': {'day':'saturday', 'slate_id':32, 'winning_score':, 'optimal':}, 
+        '11.10.22': {'day':'thursday', 'slate_id':35, 'winning_score':, 'optimal':}, 
+        '11.12.22': {'day':'saturday', 'slate_id':36, 'winning_score':, 'optimal':},
+        '11.17.22': {'day':'thursday', 'slate_id':37, 'winning_score':, 'optimal':}, 
+        '11.19.22': {'day':'saturday', 'slate_id':38, 'winning_score':, 'optimal':},
+        '12.1.22': {'day':'thursday', 'slate_id':39, 'winning_score':, 'optimal':}, 
+        '12.3.22': {'day':'saturday', 'slate_id':40, 'winning_score':, 'optimal':},
+        '12.8.22': {'day':'thursday', 'slate_id':41, 'winning_score':, 'optimal':}, 
+        '12.10.22': {'day':'saturday', 'slate_id':42, 'winning_score':, 'optimal':},
+        '12.15.22': {'day':'thursday', 'slate_id':43, 'winning_score':, 'optimal':}, 
+        '12.17.22': {'day':'saturday', 'slate_id':44, 'winning_score':, 'optimal':},
+        '12.22.22': {'day':'thursday', 'slate_id':45, 'winning_score':, 'optimal':},
+        '1.5.23': {'day':'thursday', 'slate_id':46, 'winning_score':, 'optimal':},
+        '1.7.23': {'day':'saturday', 'slate_id':47, 'winning_score':, 'optimal':},
+        '1.10.23': {'day':'tuesday', 'slate_id':48, 'winning_score':, 'optimal':},
+        '1.12.23': {'day':'thursday', 'slate_id':49, 'winning_score':, 'optimal':},
+        '1.14.23': {'day':'saturday', 'slate_id':50, 'winning_score':, 'optimal':},
+        '1.17.23': {'day':'tuesday', 'slate_id':51, 'winning_score':, 'optimal':},
+        '1.19.23': {'day':'thursday', 'slate_id':52, 'winning_score':, 'optimal':},
+        '1.21.23': {'day':'saturday', 'slate_id':53, 'winning_score':, 'optimal':},
+        '1.24.23': {'day':'tuesday', 'slate_id':54, 'winning_score':, 'optimal':},
+        '1.26.23': {'day':'thursday', 'slate_id':55, 'winning_score':, 'optimal':},
+        '2.7.23': {'day':'tuesday', 'slate_id':56, 'winning_score':, 'optimal':},
+        '2.9.23': {'day':'thursday', 'slate_id':57, 'winning_score':, 'optimal':},
+        '2.17.23': {'day':'friday', 'slate_id':58, 'winning_score':, 'optimal':},
+        '2.18.23': {'day':'saturday', 'slate_id':59, 'winning_score':, 'optimal':},
+        '2.21.23': {'day':'tuesday', 'slate_id':60, 'winning_score':, 'optimal':},
+        '2.23.23': {'day':'thursday', 'slate_id':61, 'winning_score':, 'optimal':},
+        '2.25.23': {'day':'saturday', 'slate_id':62, 'winning_score':, 'optimal':},
+        '2.28.23': {'day':'tuesday', 'slate_id':63, 'winning_score':, 'optimal':},
+        '3.2.23': {'day':'thursday', 'slate_id':64, 'winning_score':, 'optimal':},
+        '3.4.23': {'day':'saturday', 'slate_id':65, 'winning_score':, 'optimal':},
+        '3.7.23': {'day':'tuesday', 'slate_id':66, 'winning_score':, 'optimal':},
+        '3.9.23': {'day':'thursday', 'slate_id':67, 'winning_score':, 'optimal':},
+        '3.11.23': {'day':'saturday', 'slate_id':68, 'winning_score':, 'optimal':},
+        '3.14.23': {'day':'tuesday', 'slate_id':69, 'winning_score':, 'optimal':},
+        '3.16.23': {'day':'thursday', 'slate_id':70, 'winning_score':, 'optimal':},
+        '3.18.23': {'day':'saturday', 'slate_id':71, 'winning_score':, 'optimal':}, 
+        '3.20.23': {'day':'monday', 'slate_id':72, 'winning_score':, 'optimal':},
+        '3.21.23': {'day':'tuesday', 'slate_id':73, 'winning_score':, 'optimal':},
+        '3.23.23': {'day':'thursday', 'slate_id':74, 'winning_score':, 'optimal':}, 
+        '3.25.23': {'day':'saturday', 'slate_id':75, 'winning_score':, 'optimal':},
+        '3.27.23': {'day':'tuesday', 'slate_id':76, 'winning_score':, 'optimal':},
     
     },
 
     'nfl':{
+    
+        '9.4.19': {'day':'sunday',  'slate_id':1, 'winning_score':, 'optimal':},  #week 1 2019
+        '9.11.19': {'day':'sunday', 'slate_id':2, 'winning_score':, 'optimal':},  #week 2 2019
+        '9.18.19': {'day':'sunday', 'slate_id':3, 'winning_score':, 'optimal':},  #week 3 2019
+        '9.25.19': {'day':'sunday', 'slate_id':4, 'winning_score':, 'optimal':},  #week 4 2019
+        '10.2.19': {'day':'sunday', 'slate_id':5, 'winning_score':, 'optimal':},  #week 5 2019
+        '10.9.19': {'day':'sunday', 'slate_id':6, 'winning_score':, 'optimal':},  #week 6 2019
+        '10.16.19': {'day':'sunday', 'slate_id':7, 'winning_score':, 'optimal':}, #week 7 2019
+        '10.23.19': {'day':'sunday', 'slate_id':8, 'winning_score':, 'optimal':}, #week 8 2019
+        '10.30.19': {'day':'sunday', 'slate_id':9, 'winning_score':, 'optimal':}, #week 9 2019
+        '11.6.19': {'day':'sunday', 'slate_id':10, 'winning_score':, 'optimal':}, #week 10 2019
+        '11.13.19': {'day':'sunday', 'slate_id':11, 'winning_score':, 'optimal':},#week 11 2019
+        '11.20.19': {'day':'sunday', 'slate_id':12, 'winning_score':, 'optimal':},#week 12 2019
+        '11.27.19': {'day':'sunday', 'slate_id':13, 'winning_score':, 'optimal':},#week 13 2019
+        '12.4.19': {'day':'sunday', 'slate_id':14, 'winning_score':, 'optimal':}, #week 14 2019
+        '12.11.19': {'day':'sunday', 'slate_id':15, 'winning_score':, 'optimal':},#week 15 2019
+        '12.18.19': {'day':'sunday', 'slate_id':16, 'winning_score':, 'optimal':},#week 16 2019
+        '9.9.20': {'day':'sunday', 'slate_id':17, 'winning_score':, 'optimal':},  #week 1 2020
+        '9.16.20': {'day':'sunday', 'slate_id':18, 'winning_score':, 'optimal':}, #week 2 2020
+        '9.23.20': {'day':'sunday', 'slate_id':19, 'winning_score':, 'optimal':}, #week 3 2020
+        '9.30.20': {'day':'sunday', 'slate_id':20, 'winning_score':, 'optimal':}, #week 4 2020
+        '10.7.20': {'day':'sunday', 'slate_id':21, 'winning_score':, 'optimal':}, #week 5 2020
+        '10.14.20': {'day':'sunday', 'slate_id':22, 'winning_score':, 'optimal':},#week 6 2020 (optimal is a guess)
+        '10.21.20': {'day':'sunday', 'slate_id':23, 'winning_score':, 'optimal':},#week 7 2020
+        '10.28.20': {'day':'sunday', 'slate_id':24, 'winning_score':, 'optimal':},#week 8 2020
+        '11.4.20': {'day':'sunday', 'slate_id':25, 'winning_score':, 'optimal':}, #week 9 2020
+        '11.11.20': {'day':'sunday', 'slate_id':26, 'winning_score':, 'optimal':},#week 10 2020
+        '11.18.20': {'day':'sunday', 'slate_id':27, 'winning_score':, 'optimal':},#week 11 2020
+        '11.25.20': {'day':'sunday', 'slate_id':28, 'winning_score':, 'optimal':},#week 12 2020
+        '12.2.20': {'day':'sunday', 'slate_id':29, 'winning_score':, 'optimal':}, #week 13 2020
+        '12.9.20': {'day':'sunday', 'slate_id':30, 'winning_score':, 'optimal':}, #week 14 2020 
+        '9.8.21': {'day':'sunday', 'slate_id':31, 'winning_score':, 'optimal':},  #week 1 2021
+        '9.15.21': {'day':'sunday', 'slate_id':32, 'winning_score':, 'optimal':}, #week 2 2021
+        '9.22.21': {'day':'sunday', 'slate_id':33, 'winning_score':, 'optimal':}, #week 3 2021
+        '9.29.21': {'day':'sunday', 'slate_id':34, 'winning_score':, 'optimal':}, #week 4 2021
+        '10.6.21': {'day':'sunday', 'slate_id':35, 'winning_score':, 'optimal':}, #week 5 2021
+        '10.13.21': {'day':'sunday', 'slate_id':36, 'winning_score':, 'optimal':},#week 6 2021 
+        '10.20.21': {'day':'sunday', 'slate_id':37, 'winning_score':, 'optimal':},#week 7 2021 FL: 10/20/21
+        '10.27.21': {'day':'sunday', 'slate_id':38, 'winning_score':, 'optimal':},#week 8 2021 FL: 10/27/21 
+        '11.3.21': {'day':'sunday', 'slate_id':39, 'winning_score':, 'optimal':}, #week 9 2021 FL: 11/03/21
+        '11.10.21': {'day':'sunday', 'slate_id':40, 'winning_score':, 'optimal':},#week 10 2021 FL: 11/10/21
+        '11.17.21': {'day':'sunday', 'slate_id':41, 'winning_score':, 'optimal':},#week 11 2021 FL: 11/17/21
+        '11.24.21': {'day':'sunday', 'slate_id':42, 'winning_score':, 'optimal':},#week 12 2021 FL: 11/24/21
+        '12.1.21': {'day':'sunday', 'slate_id':43, 'winning_score':, 'optimal':}, #week 13 2021 FL: 12/01/21
+        '12.8.21': {'day':'sunday', 'slate_id':44, 'winning_score':, 'optimal':}, #week 14 2021 FL: 12/08/21
+        '12.15.21': {'day':'sunday', 'slate_id':45, 'winning_score':, 'optimal':},#week 15 2021 FL: 12/15/21
+        '9.7.22': {'day':'sunday', 'slate_id':46, 'winning_score':, 'optimal':},  #week 1 2022 FL: 9/7/22
+        '9.14.22': {'day':'sunday', 'slate_id':47, 'winning_score':, 'optimal':}, #week 2 2022 FL: 9/14/22
+        '9.21.22': {'day':'sunday', 'slate_id':48, 'winning_score':, 'optimal':}, #week 3 2022 FL: 9/21/22
+        '9.28.22': {'day':'sunday', 'slate_id':49, 'winning_score':, 'optimal':}, #week 4 2022 FL: 9/28/22
+        '10.5.22': {'day':'sunday', 'slate_id':50, 'winning_score':, 'optimal':}, #week 5 2022 FL: 10/5/22
+        '10.12.22': {'day':'sunday', 'slate_id':51, 'winning_score':, 'optimal':},#week 6 2022 FL: 10/12/22  
+        '10.19.22': {'day':'sunday', 'slate_id':52, 'winning_score':, 'optimal':},#week 7 2022 FL: 10/19/22 
+        '10.26.22': {'day':'sunday', 'slate_id':53, 'winning_score':, 'optimal':},#week 8 2022 FL: 10/26/22
+        '11.2.22': {'day':'sunday', 'slate_id':54, 'winning_score':, 'optimal':}, #week 9 2022 FL: 11/2/22
+        '11.9.22': {'day':'sunday', 'slate_id':55, 'winning_score':, 'optimal':}, #week 10 2022 FL: 11/9/22 
+        '11.16.22': {'day':'sunday', 'slate_id':56, 'winning_score':, 'optimal':},#week 11 2022 FL: 11/16/22 
+        '11.23.22': {'day':'sunday', 'slate_id':57, 'winning_score':, 'optimal':},#week 12 2022 FL: 11/23/22 
+        '11.30.22': {'day':'sunday', 'slate_id':58, 'winning_score':, 'optimal':},#week 13 2022 FL: 11/30/22 
+        '12.7.22': {'day':'sunday', 'slate_id':59, 'winning_score':, 'optimal':}, #week 14 2022 FL: 12/7/22
+        '12.14.22': {'day':'sunday', 'slate_id':60, 'winning_score':, 'optimal':},#week 15 2022 FL: 12/14/22
     
     }
 
