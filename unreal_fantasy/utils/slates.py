@@ -107,26 +107,26 @@ slates = {
         '10.21.20': {'day':'sunday', 'slate_id':23, 'winning_score':235.00, 'optimal':275.2},#week 7 2020
         '10.28.20': {'day':'sunday', 'slate_id':24, 'winning_score':211.24, 'optimal':246.0},#week 8 2020
         '11.4.20': {'day':'sunday', 'slate_id':25, 'winning_score':201.16, 'optimal':225.5}, #week 9 2020
-        '11.11.20': {'day':'sunday', 'slate_id':26, 'winning_score':196.06, 'optimal':210.6},#week 10 2020
-        '11.18.20': {'day':'sunday', 'slate_id':27, 'winning_score':187.96, 'optimal':211.3},#week 11 2020
-        '11.25.20': {'day':'sunday', 'slate_id':28, 'winning_score':230.00, 'optimal':258.4},#week 12 2020
-        '12.2.20': {'day':'sunday', 'slate_id':29, 'winning_score':220.00, 'optimal':251.5}, #week 13 2020
-        '30':220, #week 14 2020 
-        '31':199, #week 1 2021
-        '32':227, #week 2 2021
-        '33':204, #week 3 2021
-        '34':233, #week 4 2021
-        '35':231, #week 5 2021
-        '36':210, #week 6 2021 
-        '37':208, #week 7 2021 FL: 10/20/21
-        '38':190, #week 8 2021 FL: 10/27/21 
-        '39':196, #week 9 2021 FL: 11/03/21
-        '40':184, #week 10 2021 FL: 11/10/21
-        '41':221, #week 11 2021 FL: 11/17/21
-        '42':196, #week 12 2021 FL: 11/24/21
-        '43':219, #week 13 2021 FL: 12/01/21
-        '44':201, #week 14 2021 FL: 12/08/21
-        '45':186, #week 15 2021 FL: 12/15/21
+        '11.11.20': {'day':'sunday', 'slate_id':26, 'winning_score':200.16, 'optimal':210.6},#week 10 2020
+        '11.18.20': {'day':'sunday', 'slate_id':27, 'winning_score':191.86, 'optimal':211.3},#week 11 2020
+        '11.25.20': {'day':'sunday', 'slate_id':28, 'winning_score':229.68, 'optimal':258.4},#week 12 2020
+        '12.2.20': {'day':'sunday', 'slate_id':29, 'winning_score':228.54, 'optimal':251.5}, #week 13 2020
+        '12.9.20': {'day':'sunday', 'slate_id':30, 'winning_score':206.84, 'optimal':234.7}, #week 14 2020 
+        '9.8.21': {'day':'sunday', 'slate_id':31, 'winning_score':199.00, 'optimal':225.2},  #week 1 2021
+        '9.15.21': {'day':'sunday', 'slate_id':32, 'winning_score':227.00, 'optimal':242.4}, #week 2 2021
+        '9.22.21': {'day':'sunday', 'slate_id':33, 'winning_score':204.14, 'optimal':222.9}, #week 3 2021
+        '9.29.21': {'day':'sunday', 'slate_id':34, 'winning_score':233.00, 'optimal':262.4}, #week 4 2021
+        '10.6.21': {'day':'sunday', 'slate_id':35, 'winning_score':231.82, 'optimal':256.3}, #week 5 2021
+        '10.13.21': {'day':'sunday', 'slate_id':36, 'winning_score':210.20, 'optimal':226.3},#week 6 2021 
+        '10.20.21': {'day':'sunday', 'slate_id':37, 'winning_score':208.00, 'optimal':233.4},#week 7 2021 FL: 10/20/21
+        '10.27.21': {'day':'sunday', 'slate_id':38, 'winning_score':190.00, 'optimal':210.2},#week 8 2021 FL: 10/27/21 
+        '11.3.21': {'day':'sunday', 'slate_id':39, 'winning_score':196.00, 'optimal':226.2}, #week 9 2021 FL: 11/03/21
+        '11.10.21': {'day':'sunday', 'slate_id':40, 'winning_score':184.00, 'optimal':213.7},#week 10 2021 FL: 11/10/21
+        '11.17.21': {'day':'sunday', 'slate_id':41, 'winning_score':221.00, 'optimal':255.6},#week 11 2021 FL: 11/17/21
+        '11.24.21': {'day':'sunday', 'slate_id':42, 'winning_score':196.00, 'optimal':229.3},#week 12 2021 FL: 11/24/21
+        '12.1.21': {'day':'sunday', 'slate_id':43, 'winning_score':219.00, 'optimal':235.4}, #week 13 2021 FL: 12/01/21
+        '12.8.21': {'day':'sunday', 'slate_id':44, 'winning_score':201.00, 'optimal':225.6}, #week 14 2021 FL: 12/08/21
+        '12.15.21': {'day':'sunday', 'slate_id':45, 'winning_score':186.00, 'optimal':205.8},#week 15 2021 FL: 12/15/21
         '46':221, #week 1 2022 FL: 9/7/22
         '47':245, #week 2 2022 FL: 9/14/22
         '48':190, #week 3 2022 FL: 9/21/22
