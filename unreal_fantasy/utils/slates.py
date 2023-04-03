@@ -229,16 +229,16 @@ slates = {
 
     'nfl':{
     
-        '9.4.19': {'day':'sunday',  'slate_id':1, 'winning_score':, 'optimal':},  #week 1 2019
-        '9.11.19': {'day':'sunday', 'slate_id':2, 'winning_score':, 'optimal':},  #week 2 2019
-        '9.18.19': {'day':'sunday', 'slate_id':3, 'winning_score':, 'optimal':},  #week 3 2019
-        '9.25.19': {'day':'sunday', 'slate_id':4, 'winning_score':, 'optimal':},  #week 4 2019
-        '10.2.19': {'day':'sunday', 'slate_id':5, 'winning_score':, 'optimal':},  #week 5 2019
-        '10.9.19': {'day':'sunday', 'slate_id':6, 'winning_score':, 'optimal':},  #week 6 2019
-        '10.16.19': {'day':'sunday', 'slate_id':7, 'winning_score':, 'optimal':}, #week 7 2019
-        '10.23.19': {'day':'sunday', 'slate_id':8, 'winning_score':, 'optimal':}, #week 8 2019
-        '10.30.19': {'day':'sunday', 'slate_id':9, 'winning_score':, 'optimal':}, #week 9 2019
-        '11.6.19': {'day':'sunday', 'slate_id':10, 'winning_score':, 'optimal':}, #week 10 2019
+        '9.4.19': {'day':'sunday',  'slate_id':1, 'winning_score':281.36, 'optimal':340.2},  #week 1 2019
+        '9.11.19': {'day':'sunday', 'slate_id':2, 'winning_score':231.12, 'optimal':282.3},  #week 2 2019
+        '9.18.19': {'day':'sunday', 'slate_id':3, 'winning_score':275.70, 'optimal':321.5},  #week 3 2019
+        '9.25.19': {'day':'sunday', 'slate_id':4, 'winning_score':266.28, 'optimal':290.4},  #week 4 2019
+        '10.2.19': {'day':'sunday', 'slate_id':5, 'winning_score':331.86, 'optimal':372.7},  #week 5 2019
+        '10.9.19': {'day':'sunday', 'slate_id':6, 'winning_score':242.34, 'optimal':276.2},  #week 6 2019
+        '10.16.19': {'day':'sunday', 'slate_id':7, 'winning_score':246.36, 'optimal':309.8}, #week 7 2019
+        '10.23.19': {'day':'sunday', 'slate_id':8, 'winning_score':258.58, 'optimal':302.1}, #week 8 2019
+        '10.30.19': {'day':'sunday', 'slate_id':9, 'winning_score':269.32, 'optimal':281.0}, #week 9 2019
+        '11.6.19': {'day':'sunday', 'slate_id':10, 'winning_score':251.64, 'optimal':287.4}, #week 10 2019
         '11.13.19': {'day':'sunday', 'slate_id':11, 'winning_score':, 'optimal':},#week 11 2019
         '11.20.19': {'day':'sunday', 'slate_id':12, 'winning_score':, 'optimal':},#week 12 2019
         '11.27.19': {'day':'sunday', 'slate_id':13, 'winning_score':, 'optimal':},#week 13 2019
