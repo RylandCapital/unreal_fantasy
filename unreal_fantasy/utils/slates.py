@@ -239,20 +239,20 @@ slates = {
         '10.23.19': {'day':'sunday', 'slate_id':8, 'winning_score':258.58, 'optimal':302.1}, #week 8 2019
         '10.30.19': {'day':'sunday', 'slate_id':9, 'winning_score':269.32, 'optimal':281.0}, #week 9 2019
         '11.6.19': {'day':'sunday', 'slate_id':10, 'winning_score':251.64, 'optimal':287.4}, #week 10 2019
-        '11.13.19': {'day':'sunday', 'slate_id':11, 'winning_score':, 'optimal':},#week 11 2019
-        '11.20.19': {'day':'sunday', 'slate_id':12, 'winning_score':, 'optimal':},#week 12 2019
-        '11.27.19': {'day':'sunday', 'slate_id':13, 'winning_score':, 'optimal':},#week 13 2019
-        '12.4.19': {'day':'sunday', 'slate_id':14, 'winning_score':, 'optimal':}, #week 14 2019
-        '12.11.19': {'day':'sunday', 'slate_id':15, 'winning_score':, 'optimal':},#week 15 2019
-        '12.18.19': {'day':'sunday', 'slate_id':16, 'winning_score':, 'optimal':},#week 16 2019
-        '9.9.20': {'day':'sunday', 'slate_id':17, 'winning_score':, 'optimal':},  #week 1 2020
-        '9.16.20': {'day':'sunday', 'slate_id':18, 'winning_score':, 'optimal':}, #week 2 2020
-        '9.23.20': {'day':'sunday', 'slate_id':19, 'winning_score':, 'optimal':}, #week 3 2020
-        '9.30.20': {'day':'sunday', 'slate_id':20, 'winning_score':, 'optimal':}, #week 4 2020
-        '10.7.20': {'day':'sunday', 'slate_id':21, 'winning_score':, 'optimal':}, #week 5 2020
-        '10.14.20': {'day':'sunday', 'slate_id':22, 'winning_score':, 'optimal':},#week 6 2020 (optimal is a guess)
-        '10.21.20': {'day':'sunday', 'slate_id':23, 'winning_score':, 'optimal':},#week 7 2020
-        '10.28.20': {'day':'sunday', 'slate_id':24, 'winning_score':, 'optimal':},#week 8 2020
+        '11.13.19': {'day':'sunday', 'slate_id':11, 'winning_score':221.64, 'optimal':258.5},#week 11 2019
+        '11.20.19': {'day':'sunday', 'slate_id':12, 'winning_score':229.18, 'optimal':277.6},#week 12 2019
+        '11.27.19': {'day':'sunday', 'slate_id':13, 'winning_score':228.8, 'optimal':268.0},#week 13 2019
+        '12.4.19': {'day':'sunday', 'slate_id':14, 'winning_score':240.86, 'optimal':291.6}, #week 14 2019
+        '12.11.19': {'day':'sunday', 'slate_id':15, 'winning_score':236.32, 'optimal':313.4},#week 15 2019
+        '12.18.19': {'day':'sunday', 'slate_id':16, 'winning_score':261.24, 'optimal':301.4},#week 16 2019
+        '9.9.20': {'day':'sunday', 'slate_id':17, 'winning_score':255.86, 'optimal':284.1},  #week 1 2020
+        '9.16.20': {'day':'sunday', 'slate_id':18, 'winning_score':248.9, 'optimal':290.1}, #week 2 2020
+        '9.23.20': {'day':'sunday', 'slate_id':19, 'winning_score':249.80, 'optimal':294.9}, #week 3 2020
+        '9.30.20': {'day':'sunday', 'slate_id':20, 'winning_score':254.08, 'optimal':268.7}, #week 4 2020
+        '10.7.20': {'day':'sunday', 'slate_id':21, 'winning_score':242.5, 'optimal':277.7}, #week 5 2020
+        '10.14.20': {'day':'sunday', 'slate_id':22, 'winning_score':256.64, 'optimal':290.00},#week 6 2020 (optimal is a guess)
+        '10.21.20': {'day':'sunday', 'slate_id':23, 'winning_score':279.02, 'optimal':321.4},#week 7 2020
+        '10.28.20': {'day':'sunday', 'slate_id':24, 'winning_score':244.02, 'optimal':281.6},#week 8 2020
         '11.4.20': {'day':'sunday', 'slate_id':25, 'winning_score':, 'optimal':}, #week 9 2020
         '11.11.20': {'day':'sunday', 'slate_id':26, 'winning_score':, 'optimal':},#week 10 2020
         '11.18.20': {'day':'sunday', 'slate_id':27, 'winning_score':, 'optimal':},#week 11 2020
