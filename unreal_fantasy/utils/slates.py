@@ -253,15 +253,15 @@ slates = {
         '10.14.20': {'day':'sunday', 'slate_id':22, 'winning_score':256.64, 'optimal':290.00},#week 6 2020 (optimal is a guess)
         '10.21.20': {'day':'sunday', 'slate_id':23, 'winning_score':279.02, 'optimal':321.4},#week 7 2020
         '10.28.20': {'day':'sunday', 'slate_id':24, 'winning_score':244.02, 'optimal':281.6},#week 8 2020
-        '11.4.20': {'day':'sunday', 'slate_id':25, 'winning_score':, 'optimal':}, #week 9 2020
-        '11.11.20': {'day':'sunday', 'slate_id':26, 'winning_score':, 'optimal':},#week 10 2020
-        '11.18.20': {'day':'sunday', 'slate_id':27, 'winning_score':, 'optimal':},#week 11 2020
-        '11.25.20': {'day':'sunday', 'slate_id':28, 'winning_score':, 'optimal':},#week 12 2020
-        '12.2.20': {'day':'sunday', 'slate_id':29, 'winning_score':, 'optimal':}, #week 13 2020
-        '12.9.20': {'day':'sunday', 'slate_id':30, 'winning_score':, 'optimal':}, #week 14 2020 
-        '9.8.21': {'day':'sunday', 'slate_id':31, 'winning_score':, 'optimal':},  #week 1 2021
-        '9.15.21': {'day':'sunday', 'slate_id':32, 'winning_score':, 'optimal':}, #week 2 2021
-        '9.22.21': {'day':'sunday', 'slate_id':33, 'winning_score':, 'optimal':}, #week 3 2021
+        '11.4.20': {'day':'sunday', 'slate_id':25, 'winning_score':238.02, 'optimal':269.0}, #week 9 2020
+        '11.11.20': {'day':'sunday', 'slate_id':26, 'winning_score':218.5, 'optimal':247.5},#week 10 2020
+        '11.18.20': {'day':'sunday', 'slate_id':27, 'winning_score':222.02, 'optimal':247.4},#week 11 2020
+        '11.25.20': {'day':'sunday', 'slate_id':28, 'winning_score':253.32, 'optimal':293.4},#week 12 2020
+        '12.2.20': {'day':'sunday', 'slate_id':29, 'winning_score':258.44, 'optimal':298.1}, #week 13 2020
+        '12.9.20': {'day':'sunday', 'slate_id':30, 'winning_score':222.74, 'optimal':263.3}, #week 14 2020 
+        '9.8.21': {'day':'sunday', 'slate_id':31, 'winning_score':222.54, 'optimal':261.1},  #week 1 2021
+        '9.15.21': {'day':'sunday', 'slate_id':32, 'winning_score':233.34, 'optimal':280.1}, #week 2 2021
+        '9.22.21': {'day':'sunday', 'slate_id':33, 'winning_score':223.92, 'optimal':261.9}, #week 3 2021
         '9.29.21': {'day':'sunday', 'slate_id':34, 'winning_score':, 'optimal':}, #week 4 2021
         '10.6.21': {'day':'sunday', 'slate_id':35, 'winning_score':, 'optimal':}, #week 5 2021
         '10.13.21': {'day':'sunday', 'slate_id':36, 'winning_score':, 'optimal':},#week 6 2021 
