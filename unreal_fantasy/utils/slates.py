@@ -118,30 +118,30 @@ slates = {
         '9.29.21': {'day':'sunday', 'slate_id':34, 'winning_score':233.00, 'optimal':262.4}, #week 4 2021
         '10.6.21': {'day':'sunday', 'slate_id':35, 'winning_score':231.82, 'optimal':256.3}, #week 5 2021
         '10.13.21': {'day':'sunday', 'slate_id':36, 'winning_score':210.20, 'optimal':226.3},#week 6 2021 
-        '10.20.21': {'day':'sunday', 'slate_id':37, 'winning_score':208.00, 'optimal':233.4},#week 7 2021 FL: 10/20/21
-        '10.27.21': {'day':'sunday', 'slate_id':38, 'winning_score':190.00, 'optimal':210.2},#week 8 2021 FL: 10/27/21 
-        '11.3.21': {'day':'sunday', 'slate_id':39, 'winning_score':196.00, 'optimal':226.2}, #week 9 2021 FL: 11/03/21
-        '11.10.21': {'day':'sunday', 'slate_id':40, 'winning_score':184.00, 'optimal':213.7},#week 10 2021 FL: 11/10/21
-        '11.17.21': {'day':'sunday', 'slate_id':41, 'winning_score':221.00, 'optimal':255.6},#week 11 2021 FL: 11/17/21
-        '11.24.21': {'day':'sunday', 'slate_id':42, 'winning_score':196.00, 'optimal':229.3},#week 12 2021 FL: 11/24/21
-        '12.1.21': {'day':'sunday', 'slate_id':43, 'winning_score':219.00, 'optimal':235.4}, #week 13 2021 FL: 12/01/21
-        '12.8.21': {'day':'sunday', 'slate_id':44, 'winning_score':201.00, 'optimal':225.6}, #week 14 2021 FL: 12/08/21
-        '12.15.21': {'day':'sunday', 'slate_id':45, 'winning_score':186.00, 'optimal':205.8},#week 15 2021 FL: 12/15/21
-        '9.7.22': {'day':'sunday', 'slate_id':46, 'winning_score':221.00, 'optimal':233.1},  #week 1 2022 FL: 9/7/22
-        '9.14.22': {'day':'sunday', 'slate_id':47, 'winning_score':245.00, 'optimal':255.3}, #week 2 2022 FL: 9/14/22
-        '9.21.22': {'day':'sunday', 'slate_id':48, 'winning_score':190.00, 'optimal':233.6}, #week 3 2022 FL: 9/21/22
-        '9.28.22': {'day':'sunday', 'slate_id':49, 'winning_score':221.53, 'optimal':232.7}, #week 4 2022 FL: 9/28/22
-        '10.5.22': {'day':'sunday', 'slate_id':50, 'winning_score':228.03, 'optimal':263.7}, #week 5 2022 FL: 10/5/22
-        '10.12.22': {'day':'sunday', 'slate_id':51, 'winning_score':198.03, 'optimal':223.1},#week 6 2022 FL: 10/12/22  
-        '10.19.22': {'day':'sunday', 'slate_id':52, 'winning_score':215.00, 'optimal':242.3},#week 7 2022 FL: 10/19/22 
-        '10.26.22': {'day':'sunday', 'slate_id':53, 'winning_score':239.88, 'optimal':260.4},#week 8 2022 FL: 10/26/22
-        '11.2.22': {'day':'sunday', 'slate_id':54, 'winning_score':230.00, 'optimal':253.2}, #week 9 2022 FL: 11/2/22
-        '11.9.22': {'day':'sunday', 'slate_id':55, 'winning_score':219.00, 'optimal':243.2}, #week 10 2022 FL: 11/9/22 
-        '11.16.22': {'day':'sunday', 'slate_id':56, 'winning_score':188.00, 'optimal':223.2},#week 11 2022 FL: 11/16/22 
-        '11.23.22': {'day':'sunday', 'slate_id':57, 'winning_score':199.00, 'optimal':217.0},#week 12 2022 FL: 11/23/22 
-        '11.30.22': {'day':'sunday', 'slate_id':58, 'winning_score':197.00, 'optimal':212.6},#week 13 2022 FL: 11/30/22 
-        '12.7.22': {'day':'sunday', 'slate_id':59, 'winning_score':212.00, 'optimal':239.8}, #week 14 2022 FL: 12/7/22
-        '12.14.22': {'day':'sunday', 'slate_id':60, 'winning_score':198.00, 'optimal':223.9},#week 15 2022 FL: 12/14/22
+        '10.20.21': {'day':'sunday', 'slate_id':37, 'winning_score':208.00, 'optimal':233.4},#week 7 2021
+        '10.27.21': {'day':'sunday', 'slate_id':38, 'winning_score':190.00, 'optimal':210.2},#week 8 2021
+        '11.3.21': {'day':'sunday', 'slate_id':39, 'winning_score':196.00, 'optimal':226.2}, #week 9 2021
+        '11.10.21': {'day':'sunday', 'slate_id':40, 'winning_score':184.00, 'optimal':213.7},#week 10 2021
+        '11.17.21': {'day':'sunday', 'slate_id':41, 'winning_score':221.00, 'optimal':255.6},#week 11 2021
+        '11.24.21': {'day':'sunday', 'slate_id':42, 'winning_score':196.00, 'optimal':229.3},#week 12 2021
+        '12.1.21': {'day':'sunday', 'slate_id':43, 'winning_score':219.00, 'optimal':235.4}, #week 13 2021
+        '12.8.21': {'day':'sunday', 'slate_id':44, 'winning_score':201.00, 'optimal':225.6}, #week 14 2021
+        '12.15.21': {'day':'sunday', 'slate_id':45, 'winning_score':186.00, 'optimal':205.8},#week 15 2021
+        '9.7.22': {'day':'sunday', 'slate_id':46, 'winning_score':221.00, 'optimal':233.1},  #week 1 2022
+        '9.14.22': {'day':'sunday', 'slate_id':47, 'winning_score':245.00, 'optimal':255.3}, #week 2 2022
+        '9.21.22': {'day':'sunday', 'slate_id':48, 'winning_score':190.00, 'optimal':233.6}, #week 3 2022
+        '9.28.22': {'day':'sunday', 'slate_id':49, 'winning_score':221.53, 'optimal':232.7}, #week 4 2022
+        '10.5.22': {'day':'sunday', 'slate_id':50, 'winning_score':228.03, 'optimal':263.7}, #week 5 2022
+        '10.12.22': {'day':'sunday', 'slate_id':51, 'winning_score':198.03, 'optimal':223.1},#week 6 2022
+        '10.19.22': {'day':'sunday', 'slate_id':52, 'winning_score':215.00, 'optimal':242.3},#week 7 2022
+        '10.26.22': {'day':'sunday', 'slate_id':53, 'winning_score':239.88, 'optimal':260.4},#week 8 2022
+        '11.2.22': {'day':'sunday', 'slate_id':54, 'winning_score':230.00, 'optimal':253.2}, #week 9 2022
+        '11.9.22': {'day':'sunday', 'slate_id':55, 'winning_score':219.00, 'optimal':243.2}, #week 10 2022
+        '11.16.22': {'day':'sunday', 'slate_id':56, 'winning_score':188.00, 'optimal':223.2},#week 11 2022
+        '11.23.22': {'day':'sunday', 'slate_id':57, 'winning_score':199.00, 'optimal':217.0},#week 12 2022
+        '11.30.22': {'day':'sunday', 'slate_id':58, 'winning_score':197.00, 'optimal':212.6},#week 13 2022
+        '12.7.22': {'day':'sunday', 'slate_id':59, 'winning_score':212.00, 'optimal':239.8}, #week 14 2022
+        '12.14.22': {'day':'sunday', 'slate_id':60, 'winning_score':198.00, 'optimal':223.9},#week 15 2022
     
     }
 
@@ -229,66 +229,66 @@ slates = {
 
     'nfl':{
     
-        '9.4.19': {'day':'sunday',  'slate_id':1, 'winning_score':281.36, 'optimal':340.2},  #week 1 2019
-        '9.11.19': {'day':'sunday', 'slate_id':2, 'winning_score':231.12, 'optimal':282.3},  #week 2 2019
-        '9.18.19': {'day':'sunday', 'slate_id':3, 'winning_score':275.70, 'optimal':321.5},  #week 3 2019
-        '9.25.19': {'day':'sunday', 'slate_id':4, 'winning_score':266.28, 'optimal':290.4},  #week 4 2019
-        '10.2.19': {'day':'sunday', 'slate_id':5, 'winning_score':331.86, 'optimal':372.7},  #week 5 2019
-        '10.9.19': {'day':'sunday', 'slate_id':6, 'winning_score':242.34, 'optimal':276.2},  #week 6 2019
-        '10.16.19': {'day':'sunday', 'slate_id':7, 'winning_score':246.36, 'optimal':309.8}, #week 7 2019
-        '10.23.19': {'day':'sunday', 'slate_id':8, 'winning_score':258.58, 'optimal':302.1}, #week 8 2019
-        '10.30.19': {'day':'sunday', 'slate_id':9, 'winning_score':269.32, 'optimal':281.0}, #week 9 2019
-        '11.6.19': {'day':'sunday', 'slate_id':10, 'winning_score':251.64, 'optimal':287.4}, #week 10 2019
-        '11.13.19': {'day':'sunday', 'slate_id':11, 'winning_score':221.64, 'optimal':258.5},#week 11 2019
-        '11.20.19': {'day':'sunday', 'slate_id':12, 'winning_score':229.18, 'optimal':277.6},#week 12 2019
-        '11.27.19': {'day':'sunday', 'slate_id':13, 'winning_score':228.8, 'optimal':268.0},#week 13 2019
-        '12.4.19': {'day':'sunday', 'slate_id':14, 'winning_score':240.86, 'optimal':291.6}, #week 14 2019
-        '12.11.19': {'day':'sunday', 'slate_id':15, 'winning_score':236.32, 'optimal':313.4},#week 15 2019
-        '12.18.19': {'day':'sunday', 'slate_id':16, 'winning_score':261.24, 'optimal':301.4},#week 16 2019
-        '9.9.20': {'day':'sunday', 'slate_id':17, 'winning_score':255.86, 'optimal':284.1},  #week 1 2020
-        '9.16.20': {'day':'sunday', 'slate_id':18, 'winning_score':248.9, 'optimal':290.1}, #week 2 2020
-        '9.23.20': {'day':'sunday', 'slate_id':19, 'winning_score':249.80, 'optimal':294.9}, #week 3 2020
-        '9.30.20': {'day':'sunday', 'slate_id':20, 'winning_score':254.08, 'optimal':268.7}, #week 4 2020
-        '10.7.20': {'day':'sunday', 'slate_id':21, 'winning_score':242.5, 'optimal':277.7}, #week 5 2020
-        '10.14.20': {'day':'sunday', 'slate_id':22, 'winning_score':256.64, 'optimal':290.00},#week 6 2020 (optimal is a guess)
-        '10.21.20': {'day':'sunday', 'slate_id':23, 'winning_score':279.02, 'optimal':321.4},#week 7 2020
-        '10.28.20': {'day':'sunday', 'slate_id':24, 'winning_score':244.02, 'optimal':281.6},#week 8 2020
-        '11.4.20': {'day':'sunday', 'slate_id':25, 'winning_score':238.02, 'optimal':269.0}, #week 9 2020
-        '11.11.20': {'day':'sunday', 'slate_id':26, 'winning_score':218.5, 'optimal':247.5},#week 10 2020
-        '11.18.20': {'day':'sunday', 'slate_id':27, 'winning_score':222.02, 'optimal':247.4},#week 11 2020
-        '11.25.20': {'day':'sunday', 'slate_id':28, 'winning_score':253.32, 'optimal':293.4},#week 12 2020
-        '12.2.20': {'day':'sunday', 'slate_id':29, 'winning_score':258.44, 'optimal':298.1}, #week 13 2020
-        '12.9.20': {'day':'sunday', 'slate_id':30, 'winning_score':222.74, 'optimal':263.3}, #week 14 2020 
-        '9.8.21': {'day':'sunday', 'slate_id':31, 'winning_score':222.54, 'optimal':261.1},  #week 1 2021
-        '9.15.21': {'day':'sunday', 'slate_id':32, 'winning_score':233.34, 'optimal':280.1}, #week 2 2021
-        '9.22.21': {'day':'sunday', 'slate_id':33, 'winning_score':223.92, 'optimal':261.9}, #week 3 2021
-        '9.29.21': {'day':'sunday', 'slate_id':34, 'winning_score':, 'optimal':}, #week 4 2021
-        '10.6.21': {'day':'sunday', 'slate_id':35, 'winning_score':, 'optimal':}, #week 5 2021
-        '10.13.21': {'day':'sunday', 'slate_id':36, 'winning_score':, 'optimal':},#week 6 2021 
-        '10.20.21': {'day':'sunday', 'slate_id':37, 'winning_score':, 'optimal':},#week 7 2021 FL: 10/20/21
-        '10.27.21': {'day':'sunday', 'slate_id':38, 'winning_score':, 'optimal':},#week 8 2021 FL: 10/27/21 
-        '11.3.21': {'day':'sunday', 'slate_id':39, 'winning_score':, 'optimal':}, #week 9 2021 FL: 11/03/21
-        '11.10.21': {'day':'sunday', 'slate_id':40, 'winning_score':, 'optimal':},#week 10 2021 FL: 11/10/21
-        '11.17.21': {'day':'sunday', 'slate_id':41, 'winning_score':, 'optimal':},#week 11 2021 FL: 11/17/21
-        '11.24.21': {'day':'sunday', 'slate_id':42, 'winning_score':, 'optimal':},#week 12 2021 FL: 11/24/21
-        '12.1.21': {'day':'sunday', 'slate_id':43, 'winning_score':, 'optimal':}, #week 13 2021 FL: 12/01/21
-        '12.8.21': {'day':'sunday', 'slate_id':44, 'winning_score':, 'optimal':}, #week 14 2021 FL: 12/08/21
-        '12.15.21': {'day':'sunday', 'slate_id':45, 'winning_score':, 'optimal':},#week 15 2021 FL: 12/15/21
-        '9.7.22': {'day':'sunday', 'slate_id':46, 'winning_score':, 'optimal':},  #week 1 2022 FL: 9/7/22
-        '9.14.22': {'day':'sunday', 'slate_id':47, 'winning_score':, 'optimal':}, #week 2 2022 FL: 9/14/22
-        '9.21.22': {'day':'sunday', 'slate_id':48, 'winning_score':, 'optimal':}, #week 3 2022 FL: 9/21/22
-        '9.28.22': {'day':'sunday', 'slate_id':49, 'winning_score':, 'optimal':}, #week 4 2022 FL: 9/28/22
-        '10.5.22': {'day':'sunday', 'slate_id':50, 'winning_score':, 'optimal':}, #week 5 2022 FL: 10/5/22
-        '10.12.22': {'day':'sunday', 'slate_id':51, 'winning_score':, 'optimal':},#week 6 2022 FL: 10/12/22  
-        '10.19.22': {'day':'sunday', 'slate_id':52, 'winning_score':, 'optimal':},#week 7 2022 FL: 10/19/22 
-        '10.26.22': {'day':'sunday', 'slate_id':53, 'winning_score':, 'optimal':},#week 8 2022 FL: 10/26/22
-        '11.2.22': {'day':'sunday', 'slate_id':54, 'winning_score':, 'optimal':}, #week 9 2022 FL: 11/2/22
-        '11.9.22': {'day':'sunday', 'slate_id':55, 'winning_score':, 'optimal':}, #week 10 2022 FL: 11/9/22 
-        '11.16.22': {'day':'sunday', 'slate_id':56, 'winning_score':, 'optimal':},#week 11 2022 FL: 11/16/22 
-        '11.23.22': {'day':'sunday', 'slate_id':57, 'winning_score':, 'optimal':},#week 12 2022 FL: 11/23/22 
-        '11.30.22': {'day':'sunday', 'slate_id':58, 'winning_score':, 'optimal':},#week 13 2022 FL: 11/30/22 
-        '12.7.22': {'day':'sunday', 'slate_id':59, 'winning_score':, 'optimal':}, #week 14 2022 FL: 12/7/22
-        '12.14.22': {'day':'sunday', 'slate_id':60, 'winning_score':, 'optimal':},#week 15 2022 FL: 12/14/22
+        '9.4.19': {'day':'sunday',  'slate_id':1, 'winning_score':281.36, 'optimal':340.2},   #week 1 2019
+        '9.11.19': {'day':'sunday', 'slate_id':2, 'winning_score':231.12, 'optimal':282.3},   #week 2 2019
+        '9.18.19': {'day':'sunday', 'slate_id':3, 'winning_score':275.70, 'optimal':321.5},   #week 3 2019
+        '9.25.19': {'day':'sunday', 'slate_id':4, 'winning_score':266.28, 'optimal':290.4},   #week 4 2019
+        '10.2.19': {'day':'sunday', 'slate_id':5, 'winning_score':331.86, 'optimal':372.7},   #week 5 2019
+        '10.9.19': {'day':'sunday', 'slate_id':6, 'winning_score':242.34, 'optimal':276.2},   #week 6 2019
+        '10.16.19': {'day':'sunday', 'slate_id':7, 'winning_score':246.36, 'optimal':309.8},  #week 7 2019
+        '10.23.19': {'day':'sunday', 'slate_id':8, 'winning_score':258.58, 'optimal':302.1},  #week 8 2019
+        '10.30.19': {'day':'sunday', 'slate_id':9, 'winning_score':269.32, 'optimal':281.0},  #week 9 2019
+        '11.6.19': {'day':'sunday', 'slate_id':10, 'winning_score':251.64, 'optimal':287.4},  #week 10 2019
+        '11.13.19': {'day':'sunday', 'slate_id':11, 'winning_score':221.64, 'optimal':258.5}, #week 11 2019
+        '11.20.19': {'day':'sunday', 'slate_id':12, 'winning_score':229.18, 'optimal':277.6}, #week 12 2019
+        '11.27.19': {'day':'sunday', 'slate_id':13, 'winning_score':228.8, 'optimal':268.0},  #week 13 2019
+        '12.4.19': {'day':'sunday', 'slate_id':14, 'winning_score':240.86, 'optimal':291.6},  #week 14 2019
+        '12.11.19': {'day':'sunday', 'slate_id':15, 'winning_score':236.32, 'optimal':313.4}, #week 15 2019
+        '12.18.19': {'day':'sunday', 'slate_id':16, 'winning_score':261.24, 'optimal':301.4}, #week 16 2019
+        '9.9.20': {'day':'sunday', 'slate_id':17, 'winning_score':255.86, 'optimal':284.1},   #week 1 2020
+        '9.16.20': {'day':'sunday', 'slate_id':18, 'winning_score':248.9, 'optimal':290.1},   #week 2 2020
+        '9.23.20': {'day':'sunday', 'slate_id':19, 'winning_score':249.80, 'optimal':294.9},  #week 3 2020
+        '9.30.20': {'day':'sunday', 'slate_id':20, 'winning_score':254.08, 'optimal':268.7},  #week 4 2020
+        '10.7.20': {'day':'sunday', 'slate_id':21, 'winning_score':242.5, 'optimal':277.7},   #week 5 2020
+        '10.14.20': {'day':'sunday', 'slate_id':22, 'winning_score':256.64, 'optimal':290.0}, #week 6 2020 (optimal is a guess)
+        '10.21.20': {'day':'sunday', 'slate_id':23, 'winning_score':279.02, 'optimal':321.4}, #week 7 2020
+        '10.28.20': {'day':'sunday', 'slate_id':24, 'winning_score':244.02, 'optimal':281.6}, #week 8 2020
+        '11.4.20': {'day':'sunday', 'slate_id':25, 'winning_score':238.02, 'optimal':269.0},  #week 9 2020
+        '11.11.20': {'day':'sunday', 'slate_id':26, 'winning_score':218.5, 'optimal':247.5},  #week 10 2020
+        '11.18.20': {'day':'sunday', 'slate_id':27, 'winning_score':222.02, 'optimal':247.4}, #week 11 2020
+        '11.25.20': {'day':'sunday', 'slate_id':28, 'winning_score':253.32, 'optimal':293.4}, #week 12 2020
+        '12.2.20': {'day':'sunday', 'slate_id':29, 'winning_score':258.44, 'optimal':298.1},  #week 13 2020
+        '12.9.20': {'day':'sunday', 'slate_id':30, 'winning_score':222.74, 'optimal':263.3},  #week 14 2020 
+        '9.8.21': {'day':'sunday', 'slate_id':31, 'winning_score':222.54, 'optimal':261.1},   #week 1 2021
+        '9.15.21': {'day':'sunday', 'slate_id':32, 'winning_score':233.34, 'optimal':280.1},  #week 2 2021
+        '9.22.21': {'day':'sunday', 'slate_id':33, 'winning_score':223.92, 'optimal':261.9},  #week 3 2021
+        '9.29.21': {'day':'sunday', 'slate_id':34, 'winning_score':255.32, 'optimal':292.5},  #week 4 2021
+        '10.6.21': {'day':'sunday', 'slate_id':35, 'winning_score':260.84, 'optimal':301.6},  #week 5 2021
+        '10.13.21': {'day':'sunday', 'slate_id':36, 'winning_score':231.86, 'optimal':264.9}, #week 6 2021 
+        '10.20.21': {'day':'sunday', 'slate_id':37, 'winning_score':237.06, 'optimal':267.9}, #week 7 2021
+        '10.27.21': {'day':'sunday', 'slate_id':38, 'winning_score':226.24, 'optimal':249.6}, #week 8 2021 
+        '11.3.21': {'day':'sunday', 'slate_id':39, 'winning_score':205.34, 'optimal':257.0},  #week 9 2021
+        '11.10.21': {'day':'sunday', 'slate_id':40, 'winning_score':213.14, 'optimal':236.1}, #week 10 2021
+        '11.17.21': {'day':'sunday', 'slate_id':41, 'winning_score':230.16, 'optimal':285.5}, #week 11 2021
+        '11.24.21': {'day':'sunday', 'slate_id':42, 'winning_score':225.28, 'optimal':269.0}, #week 12 2021
+        '12.1.21': {'day':'sunday', 'slate_id':43, 'winning_score':242.08, 'optimal':276.6}, #week 13 2021
+        '12.8.21': {'day':'sunday', 'slate_id':44, 'winning_score':222.82, 'optimal':267.2}, #week 14 2021
+        '12.15.21': {'day':'sunday', 'slate_id':45, 'winning_score':222.40, 'optimal':237.5},#week 15 2021
+        '9.7.22': {'day':'sunday', 'slate_id':46, 'winning_score':, 'optimal':},  #week 1 2022
+        '9.14.22': {'day':'sunday', 'slate_id':47, 'winning_score':, 'optimal':}, #week 2 2022
+        '9.21.22': {'day':'sunday', 'slate_id':48, 'winning_score':, 'optimal':}, #week 3 2022
+        '9.28.22': {'day':'sunday', 'slate_id':49, 'winning_score':, 'optimal':}, #week 4 2022
+        '10.5.22': {'day':'sunday', 'slate_id':50, 'winning_score':, 'optimal':}, #week 5 2022
+        '10.12.22': {'day':'sunday', 'slate_id':51, 'winning_score':, 'optimal':},#week 6 2022 
+        '10.19.22': {'day':'sunday', 'slate_id':52, 'winning_score':, 'optimal':},#week 7 2022 
+        '10.26.22': {'day':'sunday', 'slate_id':53, 'winning_score':, 'optimal':},#week 8 2022
+        '11.2.22': {'day':'sunday', 'slate_id':54, 'winning_score':, 'optimal':}, #week 9 2022
+        '11.9.22': {'day':'sunday', 'slate_id':55, 'winning_score':, 'optimal':}, #week 10 2022
+        '11.16.22': {'day':'sunday', 'slate_id':56, 'winning_score':, 'optimal':},#week 11 2022 
+        '11.23.22': {'day':'sunday', 'slate_id':57, 'winning_score':, 'optimal':},#week 12 2022 
+        '11.30.22': {'day':'sunday', 'slate_id':58, 'winning_score':, 'optimal':},#week 13 2022
+        '12.7.22': {'day':'sunday', 'slate_id':59, 'winning_score':, 'optimal':}, #week 14 2022
+        '12.14.22': {'day':'sunday', 'slate_id':60, 'winning_score':, 'optimal':},#week 15 2022
     
     }
 
