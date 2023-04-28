@@ -2,6 +2,7 @@
 slates = {
     'fanduel':{
     
+    #fanduel
     'nhl':{
     
         '1.6.22': {'day':'thursday', 'slate_id':0, 'winning_score':273.90, 'optimal':337.3},
@@ -79,7 +80,7 @@ slates = {
         '3.27.23': {'day':'tuesday', 'slate_id':76, 'winning_score':227.30, 'optimal':300.4},
 
     },
-
+    #fanduel
     'nfl':{
     
         '9.4.19': {'day':'sunday',  'slate_id':1, 'winning_score':241.96, 'optimal':291.7},  #week 1 2019
@@ -103,7 +104,7 @@ slates = {
         '9.23.20': {'day':'sunday', 'slate_id':19, 'winning_score':214.90, 'optimal':250.1}, #week 3 2020
         '9.30.20': {'day':'sunday', 'slate_id':20, 'winning_score':234.78, 'optimal':242.7}, #week 4 2020
         '10.7.20': {'day':'sunday', 'slate_id':21, 'winning_score':205.00, 'optimal':235.6}, #week 5 2020
-        '10.14.20': {'day':'sunday', 'slate_id':22, 'winning_score':208.00, 'optimal':235.6},#week 6 2020 (optimal is a guess)
+        '10.14.20': {'day':'sunday', 'slate_id':22, 'winning_score':208.00, 'optimal':238.6},#week 6 2020 (optimal is a guess)
         '10.21.20': {'day':'sunday', 'slate_id':23, 'winning_score':235.00, 'optimal':275.2},#week 7 2020
         '10.28.20': {'day':'sunday', 'slate_id':24, 'winning_score':211.24, 'optimal':246.0},#week 8 2020
         '11.4.20': {'day':'sunday', 'slate_id':25, 'winning_score':201.16, 'optimal':225.5}, #week 9 2020
@@ -149,86 +150,88 @@ slates = {
 
     'draftkings':{
     
+    #draftkings
     'nhl':{
         
-        '1.6.22': {'day':'thursday', 'slate_id':0, 'winning_score':, 'optimal':},
-        '1.8.22': {'day':'saturday', 'slate_id':1, 'winning_score':, 'optimal':},
-        '1.13.22': {'day':'thursday', 'slate_id':2, 'winning_score':, 'optimal':},
-        '1.15.22': {'day':'saturday', 'slate_id':3, 'winning_score':, 'optimal':},
-        '1.20.22': {'day':'thursday', 'slate_id':4, 'winning_score':, 'optimal':},
-        '1.22.22': {'day':'saturday', 'slate_id':5, 'winning_score':, 'optimal':},
-        '1.27.22': {'day':'thursday', 'slate_id':6, 'winning_score':, 'optimal':},
-        '1.29.22': {'day':'saturday', 'slate_id':7, 'winning_score':, 'optimal':},
-        '2.10.22': {'day':'thursday', 'slate_id':8, 'winning_score':, 'optimal':},
-        '2.12.22': {'day':'saturday', 'slate_id':9, 'winning_score':, 'optimal':},
-        '2.17.22': {'day':'thursday', 'slate_id':10, 'winning_score':, 'optimal':},
-        '2.19.22': {'day':'saturday', 'slate_id':11, 'winning_score':, 'optimal':},
-        '2.24.22': {'day':'thursday', 'slate_id':12, 'winning_score':, 'optimal':},
-        '2.26.22': {'day':'saturday', 'slate_id':13, 'winning_score':, 'optimal':},
-        '3.3.22': {'day':'thursday', 'slate_id':14, 'winning_score':, 'optimal':},
-        '3.5.22': {'day':'saturday', 'slate_id':15, 'winning_score':, 'optimal':},
-        '3.10.22': {'day':'thursday', 'slate_id':16, 'winning_score':, 'optimal':},
-        '3.12.22': {'day':'saturday', 'slate_id':17, 'winning_score':, 'optimal':},
-        '3.17.22': {'day':'thursday', 'slate_id':18, 'winning_score':, 'optimal':},
-        '3.19.22': {'day':'saturday', 'slate_id':19, 'winning_score':, 'optimal':},
-        '3.24.22': {'day':'thursday', 'slate_id':20, 'winning_score':, 'optimal':},
-        '3.26.22': {'day':'saturday', 'slate_id':21, 'winning_score':, 'optimal':},
-        '3.31.22': {'day':'thursday', 'slate_id':22, 'winning_score':, 'optimal':},
-        '4.2.22': {'day':'saturday', 'slate_id':23, 'winning_score':, 'optimal':},
-        '4.9.22': {'day':'saturday', 'slate_id':24, 'winning_score':, 'optimal':},
-        '4.14.22': {'day':'thursday', 'slate_id':25, 'winning_score':, 'optimal':},
-        '4.16.22': {'day':'saturday', 'slate_id':26, 'winning_score':, 'optimal':},
-        '10.20.22': {'day':'thursday', 'slate_id':29, 'winning_score':, 'optimal':},
-        '10.22.22': {'day':'saturday', 'slate_id':30, 'winning_score':, 'optimal':}, 
-        '10.27.22': {'day':'thursday', 'slate_id':31, 'winning_score':, 'optimal':},  
-        '10.29.22': {'day':'saturday', 'slate_id':32, 'winning_score':, 'optimal':}, 
-        '11.10.22': {'day':'thursday', 'slate_id':35, 'winning_score':, 'optimal':}, 
-        '11.12.22': {'day':'saturday', 'slate_id':36, 'winning_score':, 'optimal':},
-        '11.17.22': {'day':'thursday', 'slate_id':37, 'winning_score':, 'optimal':}, 
-        '11.19.22': {'day':'saturday', 'slate_id':38, 'winning_score':, 'optimal':},
-        '12.1.22': {'day':'thursday', 'slate_id':39, 'winning_score':, 'optimal':}, 
-        '12.3.22': {'day':'saturday', 'slate_id':40, 'winning_score':, 'optimal':},
-        '12.8.22': {'day':'thursday', 'slate_id':41, 'winning_score':, 'optimal':}, 
-        '12.10.22': {'day':'saturday', 'slate_id':42, 'winning_score':, 'optimal':},
-        '12.15.22': {'day':'thursday', 'slate_id':43, 'winning_score':, 'optimal':}, 
-        '12.17.22': {'day':'saturday', 'slate_id':44, 'winning_score':, 'optimal':},
-        '12.22.22': {'day':'thursday', 'slate_id':45, 'winning_score':, 'optimal':},
-        '1.5.23': {'day':'thursday', 'slate_id':46, 'winning_score':, 'optimal':},
-        '1.7.23': {'day':'saturday', 'slate_id':47, 'winning_score':, 'optimal':},
-        '1.10.23': {'day':'tuesday', 'slate_id':48, 'winning_score':, 'optimal':},
-        '1.12.23': {'day':'thursday', 'slate_id':49, 'winning_score':, 'optimal':},
-        '1.14.23': {'day':'saturday', 'slate_id':50, 'winning_score':, 'optimal':},
-        '1.17.23': {'day':'tuesday', 'slate_id':51, 'winning_score':, 'optimal':},
-        '1.19.23': {'day':'thursday', 'slate_id':52, 'winning_score':, 'optimal':},
-        '1.21.23': {'day':'saturday', 'slate_id':53, 'winning_score':, 'optimal':},
-        '1.24.23': {'day':'tuesday', 'slate_id':54, 'winning_score':, 'optimal':},
-        '1.26.23': {'day':'thursday', 'slate_id':55, 'winning_score':, 'optimal':},
-        '2.7.23': {'day':'tuesday', 'slate_id':56, 'winning_score':, 'optimal':},
-        '2.9.23': {'day':'thursday', 'slate_id':57, 'winning_score':, 'optimal':},
-        '2.17.23': {'day':'friday', 'slate_id':58, 'winning_score':, 'optimal':},
-        '2.18.23': {'day':'saturday', 'slate_id':59, 'winning_score':, 'optimal':},
-        '2.21.23': {'day':'tuesday', 'slate_id':60, 'winning_score':, 'optimal':},
-        '2.23.23': {'day':'thursday', 'slate_id':61, 'winning_score':, 'optimal':},
-        '2.25.23': {'day':'saturday', 'slate_id':62, 'winning_score':, 'optimal':},
-        '2.28.23': {'day':'tuesday', 'slate_id':63, 'winning_score':, 'optimal':},
-        '3.2.23': {'day':'thursday', 'slate_id':64, 'winning_score':, 'optimal':},
-        '3.4.23': {'day':'saturday', 'slate_id':65, 'winning_score':, 'optimal':},
-        '3.7.23': {'day':'tuesday', 'slate_id':66, 'winning_score':, 'optimal':},
-        '3.9.23': {'day':'thursday', 'slate_id':67, 'winning_score':, 'optimal':},
-        '3.11.23': {'day':'saturday', 'slate_id':68, 'winning_score':, 'optimal':},
-        '3.14.23': {'day':'tuesday', 'slate_id':69, 'winning_score':, 'optimal':},
-        '3.16.23': {'day':'thursday', 'slate_id':70, 'winning_score':, 'optimal':},
-        '3.18.23': {'day':'saturday', 'slate_id':71, 'winning_score':, 'optimal':}, 
-        '3.20.23': {'day':'monday', 'slate_id':72, 'winning_score':, 'optimal':},
-        '3.21.23': {'day':'tuesday', 'slate_id':73, 'winning_score':, 'optimal':},
-        '3.23.23': {'day':'thursday', 'slate_id':74, 'winning_score':, 'optimal':}, 
-        '3.25.23': {'day':'saturday', 'slate_id':75, 'winning_score':, 'optimal':},
-        '3.27.23': {'day':'tuesday', 'slate_id':76, 'winning_score':, 'optimal':},
+        '1.6.22': {'day':'thursday', 'slate_id':0, 'winning_score':244.60, 'optimal':300.0},
+        '1.8.22': {'day':'saturday', 'slate_id':1, 'winning_score':205.40, 'optimal':256.1},
+        '1.13.22': {'day':'thursday', 'slate_id':2, 'winning_score':202.00, 'optimal':255.7},
+        '1.15.22': {'day':'saturday', 'slate_id':3, 'winning_score':178.40, 'optimal':226.9},
+        '1.20.22': {'day':'thursday', 'slate_id':4, 'winning_score':200.00, 'optimal':291.0},
+        '1.22.22': {'day':'saturday', 'slate_id':5, 'winning_score':200.50, 'optimal':277.3},
+        '1.27.22': {'day':'thursday', 'slate_id':6, 'winning_score':205.70, 'optimal':280.0},
+        '1.29.22': {'day':'saturday', 'slate_id':7, 'winning_score':167.50, 'optimal':255.3},
+        '2.10.22': {'day':'thursday', 'slate_id':8, 'winning_score':201.10, 'optimal':244.2},
+        '2.12.22': {'day':'saturday', 'slate_id':9, 'winning_score':218.00, 'optimal':243.6},
+        '2.17.22': {'day':'thursday', 'slate_id':10, 'winning_score':209.80, 'optimal':262.5},
+        '2.19.22': {'day':'saturday', 'slate_id':11, 'winning_score':189.50, 'optimal':222.3},
+        '2.24.22': {'day':'thursday', 'slate_id':12, 'winning_score':205.70, 'optimal':256.0},
+        '2.26.22': {'day':'saturday', 'slate_id':13, 'winning_score':224.8, 'optimal':274.0},
+        '3.3.22': {'day':'thursday', 'slate_id':14, 'winning_score':173.6, 'optimal':299.3},
+        '3.5.22': {'day':'saturday', 'slate_id':15, 'winning_score':197.1, 'optimal':267.6},
+        '3.10.22': {'day':'thursday', 'slate_id':16, 'winning_score':223.5, 'optimal':280.0},
+        '3.12.22': {'day':'saturday', 'slate_id':17, 'winning_score':193.2, 'optimal':220.0},
+        '3.17.22': {'day':'thursday', 'slate_id':18, 'winning_score':186.2, 'optimal':267.5},
+        '3.19.22': {'day':'saturday', 'slate_id':19, 'winning_score':177.7, 'optimal':231.9},
+        '3.24.22': {'day':'thursday', 'slate_id':20, 'winning_score':191.5, 'optimal':270.6},
+        '3.26.22': {'day':'saturday', 'slate_id':21, 'winning_score':214.3, 'optimal':304.7},
+        '3.31.22': {'day':'thursday', 'slate_id':22, 'winning_score':202.6, 'optimal':254.3},
+        '4.2.22': {'day':'saturday', 'slate_id':23, 'winning_score':187.1, 'optimal':259.8},
+        '4.9.22': {'day':'saturday', 'slate_id':24, 'winning_score':202.4, 'optimal':301.9},
+        '4.14.22': {'day':'thursday', 'slate_id':25, 'winning_score':242.4, 'optimal':293.1},
+        '4.16.22': {'day':'saturday', 'slate_id':26, 'winning_score':220.0, 'optimal':265.5},
+        '10.20.22': {'day':'thursday', 'slate_id':29, 'winning_score':215.5, 'optimal':299.0},
+        '10.22.22': {'day':'saturday', 'slate_id':30, 'winning_score':191.6, 'optimal':197.0}, 
+        '10.27.22': {'day':'thursday', 'slate_id':31, 'winning_score':231.2, 'optimal':282.2},  
+        '10.29.22': {'day':'saturday', 'slate_id':32, 'winning_score':179.3, 'optimal':274.5}, 
+        '11.10.22': {'day':'thursday', 'slate_id':35, 'winning_score':200.4, 'optimal':298.2}, 
+        '11.12.22': {'day':'saturday', 'slate_id':36, 'winning_score':153.6, 'optimal':233.7},
+        '11.17.22': {'day':'thursday', 'slate_id':37, 'winning_score':219.8, 'optimal':310.6}, 
+        '11.19.22': {'day':'saturday', 'slate_id':38, 'winning_score':217.6, 'optimal':282.5},
+        '12.1.22': {'day':'thursday', 'slate_id':39, 'winning_score':222.9, 'optimal':310.2}, 
+        '12.3.22': {'day':'saturday', 'slate_id':40, 'winning_score':205.9, 'optimal':278.8},
+        '12.8.22': {'day':'thursday', 'slate_id':41, 'winning_score':170.2, 'optimal':203.6}, 
+        '12.10.22': {'day':'saturday', 'slate_id':42, 'winning_score':167.6, 'optimal':251.4},
+        '12.15.22': {'day':'thursday', 'slate_id':43, 'winning_score':178.2, 'optimal':250.0}, 
+        '12.17.22': {'day':'saturday', 'slate_id':44, 'winning_score':222.8, 'optimal':275.9},
+        '12.22.22': {'day':'thursday', 'slate_id':45, 'winning_score':173.2, 'optimal':248.7},
+        '1.5.23': {'day':'thursday', 'slate_id':46, 'winning_score':192.5, 'optimal':260.4},
+        '1.7.23': {'day':'saturday', 'slate_id':47, 'winning_score':189.9, 'optimal':302.0},
+        '1.10.23': {'day':'tuesday', 'slate_id':48, 'winning_score':197.1, 'optimal':278.4},
+        '1.12.23': {'day':'thursday', 'slate_id':49, 'winning_score':178.5, 'optimal':250.5},
+        '1.14.23': {'day':'saturday', 'slate_id':50, 'winning_score':173.2, 'optimal':279.8},
+        '1.17.23': {'day':'tuesday', 'slate_id':51, 'winning_score':177.8, 'optimal':269.2},
+        '1.19.23': {'day':'thursday', 'slate_id':52, 'winning_score':180.9, 'optimal':278.9},
+        '1.21.23': {'day':'saturday', 'slate_id':53, 'winning_score':174.6, 'optimal':262.6},
+        '1.24.23': {'day':'tuesday', 'slate_id':54, 'winning_score':209.7, 'optimal':294.2},
+        '1.26.23': {'day':'thursday', 'slate_id':55, 'winning_score':186.3, 'optimal':297.4},
+        '2.7.23': {'day':'tuesday', 'slate_id':56, 'winning_score':173.3, 'optimal':225.8},
+        '2.9.23': {'day':'thursday', 'slate_id':57, 'winning_score':203.2, 'optimal':273.4},
+        '2.17.23': {'day':'friday', 'slate_id':58, 'winning_score':189.3, 'optimal':253.6},
+        '2.18.23': {'day':'saturday', 'slate_id':59, 'winning_score':190.3, 'optimal':275.0},
+        '2.21.23': {'day':'tuesday', 'slate_id':60, 'winning_score':225.4, 'optimal':278.7},
+        '2.23.23': {'day':'thursday', 'slate_id':61, 'winning_score':217.5, 'optimal':297.8},
+        '2.25.23': {'day':'saturday', 'slate_id':62, 'winning_score':163.5, 'optimal':221.6},
+        '2.28.23': {'day':'tuesday', 'slate_id':63, 'winning_score':205.9, 'optimal':326.3},
+        '3.2.23': {'day':'thursday', 'slate_id':64, 'winning_score':190.5, 'optimal':266.6},
+        '3.4.23': {'day':'saturday', 'slate_id':65, 'winning_score':193.8, 'optimal':285.3},
+        '3.7.23': {'day':'tuesday', 'slate_id':66, 'winning_score':206.9, 'optimal':283.4},
+        '3.9.23': {'day':'thursday', 'slate_id':67, 'winning_score':190.5, 'optimal':266.9},
+        '3.11.23': {'day':'saturday', 'slate_id':68, 'winning_score':216.3, 'optimal':298.5},
+        '3.14.23': {'day':'tuesday', 'slate_id':69, 'winning_score':218.4, 'optimal':297.1},
+        '3.16.23': {'day':'thursday', 'slate_id':70, 'winning_score':185.8, 'optimal':256.3},
+        '3.18.23': {'day':'saturday', 'slate_id':71, 'winning_score':205.4, 'optimal':279.3}, 
+        '3.20.23': {'day':'monday', 'slate_id':72, 'winning_score':179.4, 'optimal':240.0},
+        '3.21.23': {'day':'tuesday', 'slate_id':73, 'winning_score':183.5, 'optimal':295.8},
+        '3.23.23': {'day':'thursday', 'slate_id':74, 'winning_score':160.2, 'optimal':224.5}, 
+        '3.25.23': {'day':'saturday', 'slate_id':75, 'winning_score':209.4, 'optimal':267.7},
+        '3.27.23': {'day':'tuesday', 'slate_id':76, 'winning_score':195.0, 'optimal':257.4},
     
     },
 
     'nfl':{
-    
+        
+        #draftkings
         '9.4.19': {'day':'sunday',  'slate_id':1, 'winning_score':281.36, 'optimal':340.2},   #week 1 2019
         '9.11.19': {'day':'sunday', 'slate_id':2, 'winning_score':231.12, 'optimal':282.3},   #week 2 2019
         '9.18.19': {'day':'sunday', 'slate_id':3, 'winning_score':275.70, 'optimal':321.5},   #week 3 2019
