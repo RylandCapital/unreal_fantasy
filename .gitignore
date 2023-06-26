@@ -3,7 +3,7 @@
 #env
 Lib
 Scripts
-
+.exe
 #openbb_terminal 
 openbb_terminal
 share
