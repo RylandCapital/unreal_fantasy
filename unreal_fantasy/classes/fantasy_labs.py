@@ -66,7 +66,7 @@ class Fantasylabs:
     site_position = sites.index(self.site)
     driver.find_element('xpath', '/html/body/article/section[1]/div[1]/div[5]/div[2]/div[{0}]'.format(site_position+1)).click()
     time.sleep(2)
-    driver.set_window_size(3000, 2000)
+    driver.set_window_size(3000, 2200)
     driver.set_context("chrome")
     win = driver.find_element('tag name', "html")
     win.send_keys(Keys.CONTROL + "-")
@@ -241,7 +241,7 @@ class Fantasylabs:
 
     if self.sport == 'nfl':
       master['name'] = master['name'].apply(lambda x: x.replace(' Defense', ''))
-      master['projections_projown'] = master['projections_projown'].apply(lambda x: x.replace('','0-0') if len(x)==0 else x).apply(lambda x: x.split('-')[1])
+      # master['projections_projown'] = master['projections_projown'].apply(lambda x: x.replace('','0-0') if len(x)==0 else x).apply(lambda x: x.split('-')[1])
       master['RylandID_master'] = np.where(master['pos'] == 'D', master['City Name_master'] + + master['salary'].astype(str),  master['Last Name_master'] + master['salary'].astype(str) + master['pos'].str.lower() + master['First Name_master'])
     
     master.index = master['RylandID_master']    
