@@ -83,7 +83,7 @@ class Fantasylabs:
     return driver
   
   #historical ids are integers to keep dataiku trainsets in order
-  def scrape(self, historical=True):
+  def scrape(self, historical=True, delete_dups=False):
 
     driver = self.load_window()
     time.sleep(10)
@@ -244,7 +244,10 @@ class Fantasylabs:
       # master['projections_projown'] = master['projections_projown'].apply(lambda x: x.replace('','0-0') if len(x)==0 else x).apply(lambda x: x.split('-')[1])
       master['RylandID_master'] = np.where(master['pos'] == 'D', master['City Name_master'] + + master['salary'].astype(str),  master['Last Name_master'] + master['salary'].astype(str) + master['pos'].str.lower() + master['First Name_master'])
     
-    master.index = master['RylandID_master']    
+
+    if delete_dups==True:
+      master=master.drop_duplicates('RylandID_master', keep='first') 
+    master.index = master['RylandID_master']  
 
 
     if historical==True:

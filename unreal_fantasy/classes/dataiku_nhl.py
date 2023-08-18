@@ -9,14 +9,14 @@ from utils.slates import slates
 
 
 
-class FantasylabsNHL:
+class DataikuNHL:
 
     #date is strdate whether live or 
-    def __init__(self, site, date, historical):
+    def __init__(self, site, date, historical, live_tag=''):
         self.site = site 
         self.date = date
         self.historical = historical
-        self.slate_id = slates[site]['nhl'][date]['slate_id']
+        self.live_tag = live_tag
 
         if historical==True:
             self.hist = 'historical' 
@@ -33,13 +33,22 @@ class FantasylabsNHL:
         opt_team_score = opt_team.projected()/9
         opt_team_std = opt_team.projected_std()
 
-        file = pd.read_csv(r"C:\Users\rmathews\.unreal_fantasy\optimizations\{0}\{1}\{2}\{3}.csv.gz".format(
-            self.site,
-            'nhl',
-            self.hist,
-            str(self.cur_week)),
-            compression='gzip').sort_values('lineup')
-        
+        if self.historical == True:
+                file = pd.read_csv(r"C:\Users\rmathews\.unreal_fantasy\optimizations\{0}\{1}\{2}\{3}.csv.gz".format(
+                self.site,
+                'nhl',
+                self.hist,
+                str(self.cur_week)),
+                compression='gzip').sort_values('lineup')
+        else:
+                file = pd.read_csv(r"C:\Users\rmathews\.unreal_fantasy\optimizations\{0}\{1}\{2}\{3}.csv.gz".format(
+                self.site,
+                'nhl',
+                self.hist,
+                str(self.live_tag)),
+                compression='gzip').sort_values('lineup')
+             
+                
         try:
             file.drop('Position', axis=1, inplace=True)
         except:
@@ -183,15 +192,15 @@ class FantasylabsNHL:
         sal_std = lineups['salary'].std()/file.drop_duplicates(subset=['name',
                         'proj_proj'], keep='first')['salary'].std()
         
-        plyrs_eq_0 = lineups.apply(lambda x: len(x[x['salary']==3000]))
-        plyrs_0= lineups.apply(lambda x: len(x[x['salary']<3500]))
-        plyrs_less_5 = lineups.apply(lambda x: len(x[x['salary']<4500]))
-        plyrs_less_10 = lineups.apply(lambda x: len(x[x['salary']<5200]))
-        plyrs_less_25 = lineups.apply(lambda x: len(x[x['salary']<8500]))
-        plyrs_abv_90 = lineups.apply(lambda x: len(x[x['salary']>9500]))
-        plyrs_abv_99 = lineups.apply(lambda x: len(x[x['salary']>=10000]))
-        max_salary = file['salary'].max()
-        plyrs_eq_1 = lineups.apply(lambda x: len(x[x['salary']==max_salary]))
+        salary_info = file['salary'].describe()
+        plyrs_eq_0 = lineups.apply(lambda x: len(x[x['salary']==salary_info['min']]))
+        plyrs_0= lineups.apply(lambda x: len(x[x['salary']<salary_info['25%']]))
+        plyrs_less_5 = lineups.apply(lambda x: len(x[x['salary']<(salary_info['min'])+(salary_info['std'])]))
+        plyrs_less_10 = lineups.apply(lambda x: len(x[x['salary']<salary_info['50%']]))
+        plyrs_less_25 = lineups.apply(lambda x: len(x[x['salary']<salary_info['75%']]))
+        plyrs_abv_90 = lineups.apply(lambda x: len(x[x['salary']>salary_info['mean']]))
+        plyrs_abv_99 = lineups.apply(lambda x: len(x[x['salary']>=(salary_info['max']-100)]))
+        plyrs_eq_1 = lineups.apply(lambda x: len(x[x['salary']==salary_info['max']]))
 
         '''GAMES TEAM INFO'''
         maxplayersfrom1team = lineups.apply(
@@ -447,13 +456,21 @@ class FantasylabsNHL:
         if self.historical==True:
                 analysis['ismilly'] = np.where(analysis['actual_sum']>(slates[self.site]['nhl'][str(self.date)]['winning_score']*.999), 1,0)
         
-        #export to folder and ready for dataiku upload
-        analysis.to_csv(r"C:\Users\rmathews\.unreal_fantasy\dataiku\{0}\{1}\{2}\{3}.csv.gz".format(
-            self.site,
-            'nhl',
-            self.hist,
-            str(self.cur_week)),
-            compression='gzip', index=False) 
+        if self.historical==True:
+                #export to folder and ready for dataiku upload
+                analysis.to_csv(r"C:\Users\rmathews\.unreal_fantasy\dataiku\{0}\{1}\{2}\{3}.csv.gz".format(
+                self.site,
+                'nhl',
+                self.hist,
+                str(self.cur_week)),
+                compression='gzip', index=False) 
+        else:
+                analysis.to_csv(r"C:\Users\rmathews\.unreal_fantasy\dataiku\{0}\{1}\{2}\{3}.csv.gz".format(
+                self.site,
+                'nhl',
+                self.hist,
+                str(self.live_tag)),
+                compression='gzip', index=False) 
         
         return analysis
 

@@ -532,26 +532,33 @@ def balanced(strdates, sport, site, historical, count, live_tag=''):
         masterf = masterf.set_index('name')
 
 
-        
-        if historical==True:
-            #join all stats because time not issue 
-            stats = pd.read_csv(r"C:\Users\rmathews\.unreal_fantasy\fantasylabs\{0}\{1}\{2}\{3}.csv".format(
-                site,
-                sport,
-                hist,
-                str(cur_week))) 
-            stats = stats.set_index('RylandID_master')
-            masterf = masterf.join(stats, how='outer', lsuffix='_ot')
-
-
-
-        #export to folder and ready for ML processing
-        masterf.to_csv(r"C:\Users\rmathews\.unreal_fantasy\optimizations\{0}\{1}\{2}\{3}.csv.gz".format(
+        #join all stats because time not issue 
+        stats = pd.read_csv(r"C:\Users\rmathews\.unreal_fantasy\fantasylabs\{0}\{1}\{2}\{3}.csv".format(
             site,
             sport,
             hist,
-            str(cur_week)),
-            compression='gzip', index=True) 
+            str(cur_week))) 
+        stats = stats.set_index('RylandID_master')
+        masterf = masterf.join(stats, how='outer', lsuffix='_ot')
+
+        
+        #export to folder and ready for ML processing
+        if historical==True:
+            masterf.to_csv(r"C:\Users\rmathews\.unreal_fantasy\optimizations\{0}\{1}\{2}\{3}.csv.gz".format(
+                site,
+                sport,
+                hist,
+                str(cur_week)),
+                compression='gzip', index=True) 
+
+        else:
+            masterf.to_csv(r"C:\Users\rmathews\.unreal_fantasy\optimizations\{0}\{1}\{2}\{3}.csv.gz".format(
+                site,
+                sport,
+                hist,
+                live_tag),
+                compression='gzip', index=True)
+            
 
         
 
