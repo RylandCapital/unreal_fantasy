@@ -83,7 +83,7 @@ class Fantasylabs:
     return driver
   
   #historical ids are integers to keep dataiku trainsets in order
-  def scrape(self, historical=True, delete_dups=False):
+  def scrape(self, historical=True, delete_dups=False, site_file=''):
 
     driver = self.load_window()
     time.sleep(10)
@@ -213,7 +213,8 @@ class Fantasylabs:
               master[i]=master[i].apply(lambda x: x.replace('','0') if len(str(x))==0 else x).fillna(0)
           except:
               pass
-
+    
+    master['name'] = master['name'].apply(lambda x: x.replace(' Defense', ''))
     master['Last Name_master'] = master['name'].apply(lambda x: x.lower())
     master['City Name_master'] = master['name'].apply(lambda x: x.lower())
     master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace('st. ', ''))
@@ -240,20 +241,110 @@ class Fantasylabs:
       master['RylandID_master'] =  master['Last Name_master'] + master['salary'].astype(str) + master['pos'].str.lower() + master['First Name_master']
 
     if self.sport == 'nfl':
-      master['name'] = master['name'].apply(lambda x: x.replace(' Defense', ''))
-      # master['projections_projown'] = master['projections_projown'].apply(lambda x: x.replace('','0-0') if len(x)==0 else x).apply(lambda x: x.split('-')[1])
-      master['RylandID_master'] = np.where(master['pos'] == 'D', master['City Name_master'] + + master['salary'].astype(str),  master['Last Name_master'] + master['salary'].astype(str) + master['pos'].str.lower() + master['First Name_master'])
+      master['RylandID_master'] = np.where(master['pos'] == 'D', master['City Name_master'] + master['salary'].astype(str),  master['Last Name_master'] + master['salary'].astype(str) + master['pos'].str.lower() + master['First Name_master'])
     
 
     if delete_dups==True:
       master=master.drop_duplicates('RylandID_master', keep='first') 
+
     master.index = master['RylandID_master']  
+
+    master.to_csv(r'C:\Users\rmathews\.unreal_fantasy\scrape_debug_fantasylabs_df.csv')
+
+    
+    '''need to join IDS (only if live)'''
+    if historical==False:
+        
+      if self.site == 'fanduel':
+
+        dfid = pd.read_csv(
+          'C:\\Users\\rmathews\\.unreal_fantasy\\_site_files\\fanduel-{0}-{1}.csv'.format(self.sport, site_file),
+          header = 6
+          ).loc[:,'Player ID + Player Name':]
+        dfid = dfid.rename(columns={'ID':'Id'})
+
+        
+        
+        dfid['First Name'] = dfid['First Name'].str.lower().apply(lambda x: x.replace(' ', '')[0])
+        dfid['First Name'] = dfid['First Name'].apply(lambda x: x.replace('-', ''))
+
+        
+        
+        dfid['Last Name'] = np.where(dfid['Last Name']=='Stuetzle','Stutzle',dfid['Last Name']) #this is for nhl
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.lower())
+        dfid['City'] = master['name'].apply(lambda x: x.lower())
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace('st. ', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace('-', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' iii', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' ii', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' iv', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' jr.', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' sr.', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.split(' ')[1] if len(x.split(' '))>1 else x.split(' ')[0])
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' ', ''))
+        
+        dfid['RylandID'] = dfid['Last Name'] + dfid['Salary'].astype(str) + dfid['Position'].str.lower() + dfid['First Name']
+        if self.sport == 'nfl':
+          dfid['RylandID'] = np.where(dfid['Position'] == 'D', dfid['City'] + dfid['Salary'].astype(str),  dfid['Last Name'] + dfid['Salary'].astype(str) + dfid['Position'].str.lower() + dfid['First Name'])
+        dfid.index = dfid['RylandID']
+
+        dfid.to_csv(r'C:\Users\rmathews\.unreal_fantasy\scrape_debug_fanduelfile.csv')
+
+        master = master.join(dfid)
+
+      else:
+
+        dfid = pd.read_csv(
+          'C:\\Users\\rmathews\\.unreal_fantasy\\_site_files\\draftkings-{0}-{1}.csv'.format(self.sport, site_file),
+          header = 7
+          ).loc[:,'Position':]
+        dfid = dfid.rename(columns={'ID':'Id'})
+
+        city_dict = pd.read_csv(r'C:\Users\rmathews\.unreal_fantasy\_site_files\nfl_city_dict.csv', index_col=0, header=None).to_dict()
+        dfid['Position'] = np.where(dfid['Position']=='DST', 'D', dfid['Position'])
+        dfid['Name'] = dfid['Name'].str.strip().values
+        dfid['City'] = dfid['Name'].apply(lambda x: city_dict[1][x] if list(city_dict[1].keys()).count(x)==1 else 0)
+        dfid['City'] = np.where((dfid['City']=='Los Angeles')&(dfid['TeamAbbrev']=='LAR'), 'LA Rams', dfid['City'])
+        dfid['City'] = np.where((dfid['City']=='Los Angeles')&(dfid['TeamAbbrev']=='LAC'), 'LA Chargers', dfid['City'])
+        dfid['Name'] = np.where(dfid['Position']=='D', dfid['City'], dfid['Name'])
+
+        #create first name
+        dfid['First Name'] = dfid['Name'].apply(lambda x: x.split(' ')[0])
+        dfid['First Name'] = dfid['First Name'].str.lower().apply(lambda x: x.replace(' ', '')[0])
+        dfid['First Name'] = dfid['First Name'].apply(lambda x: x.replace('-', ''))
+
+        #create last name 
+        dfid['Last Name'] = dfid['Name'].apply(lambda x: ' '.join(x.split(' ')[1:]))
+        dfid['Last Name'] = np.where(dfid['Last Name']=='', dfid['Name'].str[:-1], dfid['Last Name'])
+
+        dfid['Last Name'] = np.where(dfid['Last Name']=='Stuetzle','Stutzle',dfid['Last Name']) #this is for nhl
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.lower())
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace('st. ', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace('-', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' iii', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' ii', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' iv', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' jr.', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' sr.', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.split(' ')[1] if len(x.split(' '))>1 else x.split(' ')[0])
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' ', ''))
+        
+        dfid['RylandID'] = dfid['Last Name'] + dfid['Salary'].astype(str) + dfid['Position'].str.lower() + dfid['First Name']
+        if self.sport == 'nfl':
+          dfid['RylandID'] = np.where(dfid['Position'] == 'D', dfid['Name'].apply(lambda x: x.lower()) + dfid['Salary'].astype(str),  dfid['Last Name'] + dfid['Salary'].astype(str) + dfid['Position'].str.lower() + dfid['First Name'])
+        dfid.index = dfid['RylandID']
+
+        dfid.to_csv(r'C:\Users\rmathews\.unreal_fantasy\scrape_debug_draftkingsfile.csv')
+
+        master = master.join(dfid)
 
 
     if historical==True:
        hist='historical'
     else:
        hist='live'
+
+
     master.to_csv(r'C:\Users\rmathews\.unreal_fantasy\fantasylabs\{0}\{1}\{2}\{3}.csv'.format(self.site,self.sport,hist,id))
 
 

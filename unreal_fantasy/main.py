@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
 '''scraping'''
 if __name__ == "__main__":
-    Fantasylabs(site='draftkings', sport='nfl', date='9.10.23').scrape(historical=False, delete_dups=False)
+    Fantasylabs(site='draftkings', sport='nfl', date='9.10.23').scrape(historical=False, delete_dups=False, site_file='week12023')
 
 
 '''optimizer'''
@@ -120,6 +120,11 @@ if __name__ == "__main__":
     upload(site='draftkings', sport='nfl', historical=False)
 
 ##############################################################################
+
+
+
+
+
 
 
 
