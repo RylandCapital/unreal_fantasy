@@ -124,8 +124,8 @@ class Fantasylabs:
 
       },
       'nfl':{
-        'fanduel':[['QB','RB','WR','TE','FLEX','D'],['rating', 'name', 'salary', 'team', 'opp'],13,-1],
-        'draftkings':[['QB','RB','WR','TE','FLEX','D'],['rating', 'name', 'salary', 'team', 'opp'],13,-1],
+        'fanduel':[['QB','RB','WR','TE','FLEX','D'],['rating', 'name', 'salary', 'team', 'opp'],12,-1],
+        'draftkings':[['QB','RB','WR','TE','FLEX','D'],['rating', 'name', 'salary', 'team', 'opp'],12,-1], #changed from 13 to 12, weird.
       }
     }
 
@@ -165,7 +165,7 @@ class Fantasylabs:
 
               rcs = []
               if (p=='D') & (self.sport=='nfl'):
-                 feature_sections=11
+                 feature_sections=10 #moved from 11 to 10
               for i in np.arange(1,feature_sections):
                   rc = driver.find_element('xpath','/html/body/article/section[2]/section/div[4]/section/div[2]/div[1]/div/div/div[1]/div[2]/div/div[1]/div/div[1]/div[2]/div/div[{0}]'.format(i)).text.split('\n')            
                   rc2 = [(rc[0]+'_'+i).replace(' ','').lower() for i in rc]
@@ -218,11 +218,12 @@ class Fantasylabs:
     master['Last Name_master'] = master['name'].apply(lambda x: x.lower())
     master['City Name_master'] = master['name'].apply(lambda x: x.lower())
     master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace('st. ', ''))
+    master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace("'", ''))
     master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace('-', ''))
     master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace(' iii', ''))
     master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace(' ii', ''))
     master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace(' iv', ''))
-    master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace(' v', ''))
+    #master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace(' v', ''))
     master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace(' jr.', ''))
     master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace(' sr.', ''))
     master['Last Name_master'] = master['Last Name_master'].apply(lambda x: x.replace(' sr.', ''))
@@ -242,7 +243,7 @@ class Fantasylabs:
 
     if self.sport == 'nfl':
       master['RylandID_master'] = np.where(master['pos'] == 'D', master['City Name_master'] + master['salary'].astype(str),  master['Last Name_master'] + master['salary'].astype(str) + master['pos'].str.lower() + master['First Name_master'])
-    
+      master['projections_projown'] = master['projections_projown'].apply(lambda x: str(x).replace('','0.1') if str(x)=='' else x)
 
     if delete_dups==True:
       master=master.drop_duplicates('RylandID_master', keep='first') 
@@ -262,18 +263,18 @@ class Fantasylabs:
           header = 6
           ).loc[:,'Player ID + Player Name':]
         dfid = dfid.rename(columns={'ID':'Id'})
+        dfid['First Name'] = np.where(dfid['Nickname'] == 'Los Angeles Rams', 'la rams', dfid['First Name'])
+        dfid['First Name'] = np.where(dfid['Nickname'] == 'Los Angeles Chargers', 'la chargers', dfid['First Name'])
 
         
-        
+        dfid['City'] = dfid['First Name'].apply(lambda x: x.lower())
         dfid['First Name'] = dfid['First Name'].str.lower().apply(lambda x: x.replace(' ', '')[0])
         dfid['First Name'] = dfid['First Name'].apply(lambda x: x.replace('-', ''))
 
-        
-        
         dfid['Last Name'] = np.where(dfid['Last Name']=='Stuetzle','Stutzle',dfid['Last Name']) #this is for nhl
         dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.lower())
-        dfid['City'] = master['name'].apply(lambda x: x.lower())
         dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace('st. ', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace("'", ''))
         dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace('-', ''))
         dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' iii', ''))
         dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' ii', ''))
@@ -320,6 +321,7 @@ class Fantasylabs:
         dfid['Last Name'] = np.where(dfid['Last Name']=='Stuetzle','Stutzle',dfid['Last Name']) #this is for nhl
         dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.lower())
         dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace('st. ', ''))
+        dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace("'", ''))
         dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace('-', ''))
         dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' iii', ''))
         dfid['Last Name'] = dfid['Last Name'].apply(lambda x: x.replace(' ii', ''))

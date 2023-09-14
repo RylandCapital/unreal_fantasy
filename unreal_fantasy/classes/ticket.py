@@ -110,29 +110,29 @@ class Ticket:
 
        fd = pd.read_csv(r"C:\Users\rmathews\.unreal_fantasy\fantasylabs\{0}\{1}\{2}\{3}.csv".format(
             'fanduel',
-            sport,
+            self.sport,
             'live',
-            str(slate_date)))
+            str(self.slate_date)))
        fd = fd.rename(columns={'Salary':'fanduel_Salary'})
        fd = fd.rename(columns={'Unnamed: 0':'fanduel_ArbID'})
  
        
        dk = pd.read_csv(r"C:\Users\rmathews\.unreal_fantasy\fantasylabs\{0}\{1}\{2}\{3}.csv".format(
             'draftkings',
-            sport,
+            self.sport,
             'live',
-            str(slate_date)))
+            str(self.slate_date)))
        dk = dk.rename(columns={'Salary':'draftkings_Salary'})
        dk = dk.rename(columns={'Unnamed: 0':'draftkings_ArbID'})
 
        
 
-       if sport == 'nhl':
+       if self.sport == 'nhl':
          dk['TeamAbbrev'] = np.where(dk['TeamAbbrev']=='WAS', 'WSH', dk['TeamAbbrev'])
          dk['TeamAbbrev'] = np.where(dk['TeamAbbrev']=='CLS', 'CBJ', dk['TeamAbbrev'])
        
        
-       if sport == 'nfl':
+       if self.sport == 'nfl':
          fd['Nickname'] = np.where(fd['Position']=='D', fd['Last Name'], fd['Nickname'])
          dk['Position'] = np.where(dk['Position']=='DST', 'D', dk['Position'])
          dk['TeamAbbrev'] = np.where(dk['TeamAbbrev']=='JAX', 'JAC', dk['TeamAbbrev'])
@@ -140,15 +140,17 @@ class Ticket:
 
        dk['combo_id'] = dk['Name'].str.lower().str.replace(' ','').str.replace('-','').str.replace('.','') +\
                         dk['TeamAbbrev']
+       dk['combo_id'] = np.where(dk['pos']=='D', dk['team'], dk['combo_id'])
       
        fd['combo_id'] = fd['Nickname'].str.lower().str.replace(' ','').str.replace('-','').str.replace('.','')+\
                        fd['Team']
+       fd['combo_id'] = np.where(fd['pos']=='D', fd['team'], fd['combo_id'])
       
        dk.set_index('combo_id', inplace=True)
        fd.set_index('combo_id', inplace=True)
 
 
-       final = fd.join(dk[['draftkings_ArbID', 'draftkings_Salary']]).sort_values('draftkings_Salary')
+       final = fd.join(dk[['draftkings_ArbID', 'draftkings_Salary']]).sort_values('salary', ascending=False)
        dkmiss = final[final['draftkings_Salary'].isnull()]
        fdmiss = final[final['fanduel_Salary'].isnull()]
 
@@ -156,26 +158,30 @@ class Ticket:
        dkmiss.to_csv(r'C:\Users\rmathews\.unreal_fantasy\debug_arb_dkmiss.csv')
        fdmiss.to_csv(r'C:\Users\rmathews\.unreal_fantasy\debug_arb_fdmiss.csv')
 
-       return final[['fanduel_ArbID','fanduel_Salary','draftkings_ArbID','draftkings_Salary']].fillna(0).astype(int)
+       return final[['fanduel_ArbID','fanduel_Salary','draftkings_ArbID','draftkings_Salary']]
 
-    def prepare(self, num_top_probas=100000, removals=[]):
+    def prepare(self, num_top_probas=100000, removals=[], sabersim=False):
         
 
-        predictions = pd.read_csv('C:\\Users\\rmathews\\.unreal_fantasy\\_live_projections\\{0}_{1}.csv'.format(site, sport))
+        predictions = pd.read_csv('C:\\Users\\rmathews\\.unreal_fantasy\\_live_projections\\{0}_{1}.csv'.format(self.site, self.sport))
         predictions.rename(columns={'proba_1.0':'proba_1'}, inplace=True)
-        predictions = predictions.sort_values(by='proba_1', ascending=False).iloc[:num_top_probas]
+        if (sabersim==True) & (self.sport=='nfl'):
+           predictions['ss_check'] = predictions['lineup'].str[-3:]
+           predictions = predictions[predictions['ss_check']=='_ss'].sort_values(by='proba_1', ascending=False)
+        else:
+           predictions = predictions.sort_values(by='proba_1', ascending=False).iloc[:num_top_probas]
         predictions = predictions.sort_values(by='lineup',ascending=False) 
 
-        optimized_path = 'C:\\Users\\rmathews\\.unreal_fantasy\\optimizations\\{0}\\{1}\\live\\'.format(site, sport)
+        optimized_path = 'C:\\Users\\rmathews\\.unreal_fantasy\\optimizations\\{0}\\{1}\\live\\'.format(self.site, self.sport)
         onlyfiles = [f for f in os.listdir(optimized_path) if os.path.isfile(os.path.join(optimized_path, f))]
         teams = pd.concat([pd.read_csv(optimized_path + f, compression='gzip').sort_values('lineup',ascending=False) for f in onlyfiles])
         #trim teams to only ones represented by dataiku preditions
         teams = teams[teams['lineup'].isin(predictions['lineup'].unique())]
         
         '''join salary arb info, ***need both fanduel and draftkings scrapes'''
-        ##stats = self.salary_aggregate()
-        ##stats.set_index('{0}_ArbID'.format(site), inplace=True)
-        ##teams.set_index('Unnamed: 0.1').join(self.salary_aggregate(), how='inner', lsuffix='_ot').reset_index()
+        stats = self.salary_aggregate()
+        stats.set_index('{0}_ArbID'.format(self.site), inplace=True)
+        teams = teams.set_index('Unnamed: 0.1').join(stats, how='inner', lsuffix='_ot').reset_index()
 
         #confirm 9 only 
         nine_confirm = teams.groupby('lineup').apply(lambda x: len(x))
@@ -268,99 +274,130 @@ class Ticket:
          
       return roster
 
-    def file_construct(slate_date='1.9.23', ids=[], model='ensemble'):
+    def file_construct(self, picks):
 
-      user = os.getlogin()
-      user = os.getlogin()
-      path = 'C:\\Users\\{0}\\.fantasy-ryland\\'.format(user)  
-      path2 ='C:\\Users\\{0}\\.fantasy-ryland\\_predict\\gpd\\optmized_team_pools\\{1}\\'.format(user,slate_date)
-      path3 = os.getcwd() + r"\fd_gpd\_predict\player_stats\by_week"
+      ticket = picks.copy()
+      ticket.rename(columns={'Nickname':'Name'}, inplace=True)
+      ##ticket.to_csv(r'C:\Users\rmathews\.unreal_fantasy\ticket_debug.csv')
 
-      preds = pd.read_csv(path+'_predict\\gpd\\ml_predictions\\{0}\\dataiku_download_{1}.csv'.format(slate_date, model))
-      preds.rename(columns={'proba_1.0':'proba_1'}, inplace=True)
-      preds = preds.sort_values(by='proba_1', ascending=False).iloc[:100000]
-      preds = preds.sort_values(by='lineup',ascending=False) 
-      
-
-      onlyfiles = [f for f in os.listdir(path2) if os.path.isfile(os.path.join(path2, f))]
-      teams = pd.concat([pd.read_csv(path2 + f, compression='gzip').sort_values('lineup',ascending=False) for f in onlyfiles])
-
-      stats = pd.read_csv(path3 + "\\" + '{0}.csv'.format(slate_date)) 
-      stats = stats.set_index('RylandID_master')
-
-      teams = teams[teams['lineup'].isin(preds['lineup'].unique())]
-      teams = teams.set_index('name').join(stats, how='inner', lsuffix='_ot').reset_index()
-      nine_confirm = teams.groupby('lineup').apply(lambda x: len(x))
-      teams = teams.set_index('lineup').loc[nine_confirm[nine_confirm==9].index.tolist()].reset_index()
-
-      picks = preds[['lineup', 'proba_1']].set_index('lineup').join(teams.set_index('lineup'), how='inner')
-      picks.sort_values(by='proba_1', ascending=False, inplace=True)
-
-      ticket = picks.loc[ids]
-
-      opt_team = fantasyze_proj(slate_date=slate_date)
-      opt_team_score = opt_team['actual'].sum()
+      opt_team = Optimize(self.sport, self.site, False).projected_optimal(self.slate_date)
+      opt_team_score = opt_team.actual()
 
       selections = []
-      exposures = dict(zip(ticket['name'].unique().tolist(),'0'*len(ticket['name'].unique().tolist())))
+      exposures = dict(zip(ticket['Name'].unique().tolist(),'0'*len(ticket['Name'].unique().tolist())))
 
-      for i,n in zip(ticket.index.unique(), np.arange(len(ticket.index.unique()))):
-            ticket_cols = ['C','C','W','W','D','D','FLEX','FLEX','G']
-            df = ticket.loc[i][['pos','Id','name','proba_1',
-            'dkSalary', 'Salary', 'proj_proj']].sort_values('Id')
-            id2 = sorted(df['Id'].values)
-            id2_names = sorted(df['name'].values)
+      if self.sport == 'nhl':
+         for i,n in zip(ticket.index.unique(), np.arange(len(ticket.index.unique()))):
+               ticket_cols = ['C','C','W','W','D','D','FLEX','FLEX','G']
+               df = ticket.loc[i][['pos','Id','Name','proba_1',
+               'other_site_salary', 
+               'Salary', 'proj_proj']].sort_values('Id')
+               id2 = sorted(df['Id'].values)
+               id2_names = sorted(df['Name'].values)
 
-            proj = df['proba_1'].iloc[0]
-            proj_pts = df['proj_proj'].sum()
-            dksalary = df['dkSalary'].sum()
-            salary = df['Salary'].sum()
+               proj = df['proba_1'].iloc[0]
+               proj_pts = df['proj_proj'].sum()
+               other_site_salary = df['other_site_salary'].iloc[0]
+               salary = df['Salary'].sum()
 
-            df = df[['pos','Id']].sort_values('pos')
-            df.set_index('pos', inplace=True)
+               df = df[['pos','Id']].sort_values('pos')
+               df.set_index('pos', inplace=True)
 
-            sections = []
-            for l in df.index.unique():
-               t = pd.DataFrame(df.loc[l])
-            if len(t) > 2:
-               t.index = [l,l] + ['FLEX']*(len(t)-2)
-               sections.append(t)
-            elif len(t) == 1:
-               sections.append(t.T)
-            else:
-               sections.append(t)
+               sections = []
+               for l in df.index.unique():
+                  t = pd.DataFrame(df.loc[l])
+               if len(t) > 2:
+                  t.index = [l,l] + ['FLEX']*(len(t)-2)
+                  sections.append(t)
+               elif len(t) == 1:
+                  sections.append(t.T)
+               else:
+                  sections.append(t)
 
-            df = pd.concat(sections).loc[ticket_cols].drop_duplicates('Id').T
-            df['id2'] = str(id2)
-            df['name'] = str(id2_names)
-            df['proba_1'] = proj
-            df['projected'] = proj_pts
-            df['pct_optimal'] = round(proj_pts/opt_team_score,2)
-            df['Salary'] = salary
-            df['dkSalary'] = dksalary
+               df = pd.concat(sections).loc[ticket_cols].drop_duplicates('Id').T
+               df['id2'] = str(id2)
+               df['name'] = str(id2_names)
+               df['proba_1'] = proj
+               df['projected'] = proj_pts
+               df['pct_optimal'] = round(proj_pts/opt_team_score,2)
+               df['Salary'] = salary
+               df['other_site_salary'] = other_site_salary
 
-            update = [exposures.update({i:float(exposures[i])+1}) for i in id2_names]
-            selections.append(df)
+               update = [exposures.update({i:float(exposures[i])+1}) for i in id2_names]
+               selections.append(df)
+      else:
+         for i,n in zip(ticket.index.unique(), np.arange(len(ticket.index.unique()))):
+               ticket_cols = ['QB','RB','RB','WR','WR','WR','TE','FLEX','D']
+               df = ticket.loc[i][['pos','Id','Name','proba_1',
+               'other_site_salary', 
+               'Salary', 'projections_proj']].sort_values('Id')
+               id2 = sorted(df['Id'].values)
+               id2_names = sorted(df['Name'].values)
 
-            
+               proj = df['proba_1'].iloc[0]
+               proj_pts = df['projections_proj'].sum()
+               other_site_salary = df['other_site_salary'].iloc[0]
+               salary = df['Salary'].sum()
+
+               df = df[['pos','Id']].sort_values('pos')
+               df.set_index('pos', inplace=True)
+
+               sections = []
+               for l in df.index.unique():
+                  t = pd.DataFrame(df.loc[l])
+                  posit = t.index[0]
+                  if len(t) == 4:
+                     t.index = [l,l,l] + ['FLEX']
+                     sections.append(t)
+                  if (len(t) == 3) & (posit == 'WR'):
+                     sections.append(t)
+                  if (len(t) == 3) & (posit == 'RB'):
+                     t.index = [l,l] + ['FLEX']
+                     sections.append(t)
+                  if (len(t) == 2) & (posit == 'RB'):
+                     sections.append(t)
+                  if (len(t) == 2) & (posit == 'TE'):
+                     t.index = [l] + ['FLEX']
+                     sections.append(t)
+                  elif len(t) == 1:
+                     sections.append(t.T)
+                  else:
+                     sections.append(t)
+
+               df = pd.concat(sections).loc[ticket_cols].drop_duplicates('Id').T
+               df['id2'] = str(id2)
+               df['name'] = str(id2_names)
+               df['proba_1'] = proj
+               df['projected'] = proj_pts
+               df['pct_optimal'] = round(proj_pts/opt_team_score,2)
+               df['Salary'] = salary
+               df['other_site_salary'] = other_site_salary
+               df['lineup'] = i
+
+               update = [exposures.update({i:float(exposures[i])+1}) for i in id2_names]
+               selections.append(df)
+
+  
 
       upload = pd.concat(selections)
       #remove duplicate teams (id2)
       upload = upload.sort_values(by='proba_1', ascending=False).drop_duplicates('id2',keep='first')
-      #download final ticket ids for backtesting historically 
-      upload.drop('id2', axis=1).to_csv(path+'_predict\\gpd\\uploaded_gameday_tickets\\{0}_{1}_ticket.csv'.format(slate_date, model))
+      upload.drop('id2', axis=1).to_csv('C:\\Users\\rmathews\\.unreal_fantasy\\tickets\\{0}_{1}_{2}_ticket.csv'.format(self.site, self.sport, self.slate_date))
       exposuresdf = (pd.DataFrame.from_dict(exposures,orient='index').astype(float).sort_values(by=0, ascending=False)/len(selections)*100).round(1)
-      exposuresdf = exposuresdf.join(ticket[['name', 'Team', 'pos', 'Salary', 'proj_proj']].set_index('name')).drop_duplicates().sort_values(by=0, ascending=False)
-      exposuresdf.columns = ['my_ownership', 'Team', 'Position', 'Salary', 'Projected Points']
-      exposuresdf.to_csv(path+'_predict\\gpd\\uploaded_gameday_tickets\\{0}_{1}_exposures.csv'.format(slate_date, model))
+      try:
+         exposuresdf = exposuresdf.join(ticket[['Name', 'team', 'pos', 'Salary', 'proj_proj']].set_index('Name')).drop_duplicates().sort_values(by=0, ascending=False)
+      except:
+         exposuresdf = exposuresdf.join(ticket[['Name','projections_projown', 'team', 'pos', 'Salary', 'projections_proj']].set_index('Name')).drop_duplicates().sort_values(by=0, ascending=False)
+      exposuresdf.columns = ['My Ownership', 'Projected Ownership', 'Team', 'Position', 'Salary', 'Projected Points']
+      exposuresdf.to_csv('C:\\Users\\rmathews\\.unreal_fantasy\\tickets\\{0}_{1}_{2}_exposures.csv'.format(self.site, self.sport, self.slate_date))
 
 
       return upload, exposuresdf
 
-    def optimize_upload_file(self, roster_size=150, pct_from_opt_proj=.808, max_pct_own=.33, other_site_min=0, removals=[]):
+    def optimize_upload_file(self, roster_size=150, pct_from_opt_proj=.808, max_pct_own=.33, other_site_min=0, sabersim_only=False, removals=[]):
 
        
-      picks = self.prepare(num_top_probas=100000, removals=removals)
+      picks = self.prepare(num_top_probas=100000, removals=removals, sabersim=sabersim_only)
       picks['team_proj'] = picks.groupby(level=0)['actual'].sum()
       try: #NHL
          picks['team_+/-'] = picks.groupby(level=0)['proj_proj+/-'].sum()
@@ -368,8 +405,8 @@ class Ticket:
          picks['team_+/-'] = picks.groupby(level=0)['projections_proj+/-'].sum()
       
       #need salary arb stuff
-      ##flip_dict = {'fanduel':'draftkings', 'draftkings':'fanduel'}
-      ##picks['other_site_salary'] = picks.groupby(level=0)['{0}_Salary'.format(flip_dict[site])].sum()
+      flip_dict = {'fanduel':'draftkings', 'draftkings':'fanduel'}
+      picks['other_site_salary'] = picks.groupby(level=0)['{0}_Salary'.format(flip_dict[self.site])].sum()
 
       player_list = pd.DataFrame(picks.groupby(level=0).apply(lambda x: x['RylandID'].tolist()))
       player_list[1] = player_list[0].apply(lambda x: x[0])
@@ -389,13 +426,13 @@ class Ticket:
       teams = picks.groupby(level=0).first()
       teams = teams.sort_values(by='proba_1', ascending=False)
 
-      optimaldf = Optimize(sport, site, False).projected_optimal(slate_date)
+      optimaldf = Optimize(self.sport, self.site, False).projected_optimal(self.slate_date)
       teams=teams[teams['team_proj']>=optimaldf.actual()*pct_from_opt_proj]
       #need salary arb stuff
-      ##teams=teams[teams['other_site_salary']>=other_site_min]
+      teams=teams[teams['other_site_salary']>=other_site_min]
       teams.sort_values(by='proba_1', ascending=False).to_csv(r'C:\Users\rmathews\.unreal_fantasy\_live_projections\optimtkttemp.csv')
 
-      owndict = picks[['Unnamed: 0.1','proba_1']].drop_duplicates('Unnamed: 0.1').set_index('Unnamed: 0.1').to_dict()
+      owndict = picks[['index','proba_1']].drop_duplicates('index').set_index('index').to_dict()
       own_limits = []
       for i in owndict['proba_1'].keys():
          entry = ["{0}".format(i), int(-1), int(roster_size*max_pct_own)]
@@ -405,7 +442,12 @@ class Ticket:
       players = team.players
       ids = [i.lineup for i in players]
 
-      pass
+      picks = picks.loc[ids]
+
+      self.file_construct(picks)
+
+      return ids
+
 
 
 

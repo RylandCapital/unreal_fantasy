@@ -326,7 +326,7 @@ class Optimize:
 
 
 #count for historical == 1000, live == 40000
-def balanced(strdates, sport, site, historical, count, live_tag=''):
+def balanced(strdates, sport, site, historical, count, live_tag='', sabersim=False):
     
     for date in strdates:
         
@@ -378,6 +378,32 @@ def balanced(strdates, sport, site, historical, count, live_tag=''):
                 df.drop('teamz', inplace=True, axis=1)
                 dfs.append(df)
                 i+=1
+        
+        if (sabersim == True) & (site=='draftkings'):
+            ssdf = pd.read_csv(r'C:\Users\rmathews\.unreal_fantasy\_live_projections\sabersim.csv')
+            site_file = pd.read_csv(r"C:\Users\rmathews\.unreal_fantasy\fantasylabs\{0}\{1}\{2}\{3}.csv".format(
+            site,
+            sport,
+            hist,
+            str(cur_week)))
+
+            for i in np.arange(len(ssdf)):
+                row = pd.DataFrame(ssdf.loc[i,:])
+                ids = row.iloc[:9].astype(int).reset_index().set_index(i)
+                ids = ids.join(site_file.set_index('Id'), how='left')
+
+                names = [i for i in ids['RylandID_master']]
+                actual = [i for i in ids['projections_proj']]
+                position = [i for i in ids['pos']]
+                salary = [i for i in ids['Salary']]
+
+                df = pd.DataFrame([names, actual, position, salary, team_exposures], index = ['name',
+                                'actual', 'position', 'salary', 'teamz']).T
+                df['team_salary'] = sum(salary)
+                df['lineup'] = str(i) + str(0) +'_959' + live_tag + '_ss'
+
+                if len(df.dropna())==9:
+                    dfs.append(df)
 
         if historical==True:
 
@@ -527,7 +553,7 @@ def balanced(strdates, sport, site, historical, count, live_tag=''):
                     df.drop('teamz', inplace=True, axis=1)
                     dfs.append(df)
                     i+=1
-
+           
         masterf = pd.concat(dfs)
         masterf = masterf.set_index('name')
 

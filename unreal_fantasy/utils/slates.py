@@ -143,6 +143,7 @@ slates = {
         '11.30.22': {'day':'sunday', 'slate_id':58, 'winning_score':197.00, 'optimal':212.6},#week 13 2022
         '12.7.22': {'day':'sunday', 'slate_id':59, 'winning_score':212.00, 'optimal':239.8}, #week 14 2022
         '12.14.22': {'day':'sunday', 'slate_id':60, 'winning_score':198.00, 'optimal':223.9},#week 15 2022
+        '9.6.23': {'day':'sunday', 'slate_id':61, 'winning_score':197.62, 'optimal':226.7},  #week 1 2023
     
     }
 
@@ -290,6 +291,7 @@ slates = {
         '11.30.22': {'day':'sunday', 'slate_id':58, 'winning_score':229.18, 'optimal':244.40},#week 13 2022
         '12.7.22': {'day':'sunday', 'slate_id':59, 'winning_score':272.32, 'optimal':284.8},  #week 14 2022
         '12.14.22': {'day':'sunday', 'slate_id':60, 'winning_score':231.34, 'optimal':258.4}, #week 15 2022
+        '9.6.23': {'day':'sunday', 'slate_id':61, 'winning_score':228.84, 'optimal':259.2},   #week 1 2023
     
     }
 
