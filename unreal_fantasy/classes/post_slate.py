@@ -28,6 +28,7 @@ class PostSlate:
             str(self.slate_date)))
        fd = fd.rename(columns={'Salary':'fanduel_Salary'})
        fd = fd.rename(columns={'Unnamed: 0':'fanduel_ArbID'})
+       fd['fanduel_ArbID'] = fd['RylandID_master'].copy()
  
        
        dk = pd.read_csv(r"C:\Users\rmathews\.unreal_fantasy\fantasylabs\{0}\{1}\{2}\{3}.csv".format(
@@ -37,6 +38,7 @@ class PostSlate:
             str(self.slate_date)))
        dk = dk.rename(columns={'Salary':'draftkings_Salary'})
        dk = dk.rename(columns={'Unnamed: 0':'draftkings_ArbID'})
+       dk['draftkings_ArbID'] = dk['RylandID_master'].copy()
 
        
 
@@ -73,7 +75,7 @@ class PostSlate:
 
        return final[['fanduel_ArbID','fanduel_Salary','draftkings_ArbID','draftkings_Salary']]
 
-    def prepare(self, remove=True, removals=[]):
+    def prepare(self, remove=True, removals=[], sabersim_only=False):
         
 
         predictions = pd.read_csv('C:\\Users\\rmathews\\.unreal_fantasy\\_live_projections\\{0}_{1}.csv'.format(self.site, self.sport))
@@ -81,11 +83,15 @@ class PostSlate:
         predictions = predictions.sort_values(by='proba_1', ascending=False)
         predictions = predictions.sort_values(by='lineup',ascending=False) 
 
+        if sabersim_only == True:
+            predictions = predictions[predictions['lineup'].str[-3:] == '_ss'].sort_values(by='proba_1', ascending=False)
+
         optimized_path = 'C:\\Users\\rmathews\\.unreal_fantasy\\optimizations\\{0}\\{1}\\live\\'.format(self.site, self.sport)
         onlyfiles = [f for f in os.listdir(optimized_path) if os.path.isfile(os.path.join(optimized_path, f))]
         teams = pd.concat([pd.read_csv(optimized_path + f, compression='gzip').sort_values('lineup',ascending=False) for f in onlyfiles])
         #trim teams to only ones represented by dataiku preditions
         teams = teams[teams['lineup'].isin(predictions['lineup'].unique())]
+        teams['Unnamed: 0.1'] = teams['Unnamed: 0'].copy()
         
         '''join salary arb info, ***need both fanduel and draftkings scrapes'''
         stats = self.salary_aggregate()
@@ -135,16 +141,27 @@ class PostSlate:
 
         return postdf
     
-    def anaylze(self, removals=[], pct_from_opt_proj=.808, max_pct_own=.33, other_site_min_compare=60100):
+    def anaylze(self, removals=[], pct_from_opt_proj=.808, max_pct_own=.33, other_site_min_compare=60100, sabersim_only=False):
 
-        postdf = self.prepare(remove=True, removals=removals)
+        milly_winner = slates[self.site][self.sport][self.slate_date]['winning_score']
+        postdf = self.prepare(remove=True, removals=removals, sabersim_only=sabersim_only)
         postdf_trim = postdf[~postdf.index.duplicated(keep='first')]
         max_score = postdf['team_actual'].max()
         max_score_proba = postdf[postdf['team_actual']==max_score]['proba_1'].iloc[0]
         max_score_proba_rank = postdf[postdf['team_actual']==max_score]['proba_rank'].iloc[0]
         proba_act_corr = postdf['proba_1'].corr(postdf['team_actual'])
         actual_other_salary_corr = postdf_trim['other_site_salary'].corr(postdf_trim['team_actual'])
-
+        num_milly_winners = len(postdf_trim[postdf_trim['team_actual']>=milly_winner])
+        milly_winners_pct = num_milly_winners/len(postdf_trim)
+        try:
+            highest_proba_rank_milly_winner = postdf_trim[postdf_trim['team_actual']>=milly_winner]['proba_rank'].min()
+        except:
+            highest_proba_rank_milly_winner = 'N/A'
+        try:
+            highest_proba_milly_winner = postdf_trim[postdf_trim['team_actual']>=milly_winner]['proba_1'].max()
+        except:
+            highest_proba_milly_winner = 'N/A'
+    
         pool_top_150_proj = postdf_trim.sort_values(by='team_proj', ascending=False)[['team_proj', 'team_actual']].iloc[:150]['team_actual'].describe()
         pool_top_150_proba = postdf_trim.sort_values(by='proba_1', ascending=False)[['proba_1', 'team_actual']].iloc[:150]['team_actual'].describe()
 
@@ -160,7 +177,7 @@ class PostSlate:
                 pct_from_opt_proj=pct_from_opt_proj,#.808 
                 max_pct_own=max_pct_own,
                 other_site_min=0, 
-                sabersim_only=False,
+                sabersim_only=sabersim_only,
                 removals=removals)
         
         postdf2 = self.prepare(remove=False)
@@ -180,7 +197,7 @@ class PostSlate:
                 pct_from_opt_proj=pct_from_opt_proj,#.808 
                 max_pct_own=max_pct_own,
                 other_site_min=other_site_min_compare, 
-                sabersim_only=False,
+                sabersim_only=sabersim_only,
                 removals=removals)
 
         ticket_stats_wsitemin = postdf2_trim.loc[ticket_ids][['proba_1', 'team_actual']].iloc[:150]['team_actual'].describe()
@@ -193,6 +210,10 @@ class PostSlate:
         report.loc['top pool score', 'pool top 150 projd'] = max_score.round(2)
         report.loc['top pool score proba', 'pool top 150 projd'] = max_score_proba.round(2)
         report.loc['max score proba rank', 'pool top 150 projd'] = max_score_proba_rank.round(2)
+        report.loc['number of milly winners', 'pool top 150 projd'] = num_milly_winners
+        report.loc['number of milly winners % pool', 'pool top 150 projd'] = milly_winners_pct
+        report.loc['highest_proba_rank_milly_winner', 'pool top 150 projd'] = highest_proba_rank_milly_winner
+        report.loc['highest_proba_milly_winner', 'pool top 150 projd'] = highest_proba_milly_winner
         report.loc['proba act corr', 'pool top 150 projd'] = proba_act_corr.round(2)
         report.loc['actual other salary corr', 'pool top 150 projd'] = actual_other_salary_corr.round(2)
 

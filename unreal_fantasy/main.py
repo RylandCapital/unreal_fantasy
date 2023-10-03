@@ -19,7 +19,7 @@ from utils.uploader import upload
 
 '''scraping'''
 def run_scrape(date):
-    Fantasylabs(site='fanduel', sport='nfl', date='date').scrape(historical=True, delete_dups=False)
+    Fantasylabs(site='draftkings', sport='nfl', date='9.13.23').scrape(historical=True, delete_dups=False)
 
 if __name__ == "__main__":
 
@@ -81,12 +81,15 @@ if __name__ == "__main__":
 
 '''scraping'''
 if __name__ == "__main__":
-    Fantasylabs(site='fanduel', sport='nfl', date='9.6.23').scrape(historical=False, delete_dups=False, site_file='week22023')
+    Fantasylabs(site='draftkings', sport='nfl', date='9.27.23').scrape(historical=False, delete_dups=False, site_file='week42023')
 
 
 '''optimizer'''
 def run_optimization_live(live_tag):
-    balanced(['9.10.23'], 'nfl', 'fanduel', False, 50000, live_tag=live_tag, sabersim=False)
+    balanced(['9.27.23'], 'nfl', 'draftkings', False, 90000, live_tag=live_tag, sabersim=False)
+    balanced(['9.27.23'], 'nfl', 'fanduel', False, 90000, live_tag=live_tag, sabersim=False)
+    if live_tag=='a':
+        balanced(['9.27.23'], 'nfl', 'draftkings', False, 100, live_tag='a', sabersim=True)
 
 if __name__ == "__main__":
     letters = [
@@ -94,7 +97,8 @@ if __name__ == "__main__":
                'f','g','h','i','j',
                'k','l','m','n','o',
                'p','q','r','s','t',
-               'u','v','w','x','y'
+               'u','v','w','x','y',
+               'z'
                ]
     
     with Pool(len(letters)) as p:  
@@ -103,7 +107,8 @@ if __name__ == "__main__":
 
 '''dataiku'''
 def run_build_live(live_tag):
-    DataikuNFL(site='fanduel', date='9.6.23', historical=False, live_tag=live_tag).build()
+    DataikuNFL(site='draftkings', date='9.27.23', historical=False, live_tag=live_tag).build()
+    DataikuNFL(site='fanduel', date='9.27.23', historical=False, live_tag=live_tag).build()
 
 if __name__ == "__main__":
 
@@ -112,7 +117,8 @@ if __name__ == "__main__":
                'f','g','h','i','j',
                'k','l','m','n','o',
                'p','q','r','s','t',
-               'u','v','w','x','y'
+               'u','v','w','x','y',
+               'z'
                ]
 
     with Pool(len(letters)) as p:  
@@ -121,7 +127,9 @@ if __name__ == "__main__":
 
 '''upload ticket creation'''
 if __name__ == "__main__":
+    upload(site='draftkings', sport='nfl', historical=False)
     upload(site='fanduel', sport='nfl', historical=False)
+
 
 ##############################################################################
 
@@ -140,20 +148,31 @@ if __name__ == "__main__":
 
 if __name__ == "__main__":
     ids = Ticket(
-            '9.6.23',
+            '9.27.23',
             'draftkings', 
             'nfl', 
-            site_file='week12023'
+            site_file='week42023'
             )\
             .optimize_upload_file(
                 roster_size=150, 
-                pct_from_opt_proj=.808,#.808 
+                pct_from_opt_proj=.808,
                 max_pct_own=.33,
-                other_site_min=0, 
+                other_site_min=60200, 
                 sabersim_only=False,
-                removals=[28792643,'92765-169776',28792693,'92765-39716',
-                          28792401,'92765-70027', 28792713, '92765-33260',
-                          28792703])
+                h2h=False,
+                h2h_rank=.99,
+                removals=[29816345, '94274-54604',
+                           29816337, '94274-54879',
+                             29816403, '94274-80001',
+                             29816705, '94274-56018',
+                               29817139, '94274-47870',
+                               29816821, '94274-112192',
+                               29816429, '94274-71845',
+                               29816749, '94274-86687',
+                               29816344, '94274-24849',
+                               29816841, '94274-73111'])
+
+
 
 
 
@@ -161,14 +180,22 @@ if __name__ == "__main__":
 #POST SLATE REVIEW
 if __name__ == "__main__":
     PostSlate(
-            '9.6.23',
-            'fanduel', 
+            '9.27.23',
+            'draftkings', 
             'nfl', 
-            site_file='week12023'
+            site_file='week42023'
             )\
-            .anaylze(removals=[28792643,'92765-169776',28792693,'92765-39716',
-                          28792401,'92765-70027', 28792713, '92765-33260',
-                          28792703],
+            .anaylze(removals=[29816345, '94274-54604',
+                           29816337, '94274-54879',
+                             29816403, '94274-80001',
+                             29816705, '94274-56018',
+                               29817139, '94274-47870',
+                               29816821, '94274-112192',
+                               29816429, '94274-71845',
+                               29816749, '94274-86687',
+                               29816344, '94274-24849',
+                               29816841, '94274-73111'],
                      pct_from_opt_proj=.808,
                      max_pct_own=.33, 
-                     other_site_min_compare=51000)
+                     other_site_min_compare=0,
+                     sabersim_only=False)

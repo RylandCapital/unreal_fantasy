@@ -115,6 +115,7 @@ class Ticket:
             str(self.slate_date)))
        fd = fd.rename(columns={'Salary':'fanduel_Salary'})
        fd = fd.rename(columns={'Unnamed: 0':'fanduel_ArbID'})
+       fd['fanduel_ArbID'] = fd['RylandID_master'].copy()
  
        
        dk = pd.read_csv(r"C:\Users\rmathews\.unreal_fantasy\fantasylabs\{0}\{1}\{2}\{3}.csv".format(
@@ -124,6 +125,7 @@ class Ticket:
             str(self.slate_date)))
        dk = dk.rename(columns={'Salary':'draftkings_Salary'})
        dk = dk.rename(columns={'Unnamed: 0':'draftkings_ArbID'})
+       dk['draftkings_ArbID'] = dk['RylandID_master'].copy()
 
        
 
@@ -177,6 +179,7 @@ class Ticket:
         teams = pd.concat([pd.read_csv(optimized_path + f, compression='gzip').sort_values('lineup',ascending=False) for f in onlyfiles])
         #trim teams to only ones represented by dataiku preditions
         teams = teams[teams['lineup'].isin(predictions['lineup'].unique())]
+        teams['Unnamed: 0.1'] = teams['Unnamed: 0'].copy()
         
         '''join salary arb info, ***need both fanduel and draftkings scrapes'''
         stats = self.salary_aggregate()
@@ -394,16 +397,23 @@ class Ticket:
 
       return upload, exposuresdf
 
-    def optimize_upload_file(self, roster_size=150, pct_from_opt_proj=.808, max_pct_own=.33, other_site_min=0, sabersim_only=False, removals=[]):
+    def optimize_upload_file(self, roster_size=150, pct_from_opt_proj=.808, max_pct_own=.33, other_site_min=0, sabersim_only=False, h2h=False, h2h_rank=.99, removals=[]):
 
        
       picks = self.prepare(num_top_probas=100000, removals=removals, sabersim=sabersim_only)
       picks['team_proj'] = picks.groupby(level=0)['actual'].sum()
       try: #NHL
          picks['team_+/-'] = picks.groupby(level=0)['proj_proj+/-'].sum()
+         picks['team_floor'] = picks.groupby(level=0)['proj_floor'].sum().rank(pct=True)
+         picks['team_pts/sal'] = picks.groupby(level=0)['proj_pts/sal'].sum().rank(pct=True)
+         picks['team_projown'] = picks.groupby(level=0)['proj_projown'].sum().rank(pct=True)
       except: #NFL
          picks['team_+/-'] = picks.groupby(level=0)['projections_proj+/-'].sum()
-      
+         picks['team_floor'] = picks.groupby(level=0)['projections_floor'].sum().rank(pct=True)
+         picks['team_pts/sal'] = picks.groupby(level=0)['projections_pts/sal'].sum().rank(pct=True)
+         picks['team_projown'] = picks.groupby(level=0)['projections_projown'].sum().rank(pct=True)
+      if h2h==True:
+         picks = picks[(picks['team_floor']>.99)&(picks['team_pts/sal']>.99)&(picks['team_projown']>.99)]
       #need salary arb stuff
       flip_dict = {'fanduel':'draftkings', 'draftkings':'fanduel'}
       picks['other_site_salary'] = picks.groupby(level=0)['{0}_Salary'.format(flip_dict[self.site])].sum()

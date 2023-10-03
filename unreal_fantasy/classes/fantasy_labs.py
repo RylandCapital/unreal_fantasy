@@ -265,6 +265,8 @@ class Fantasylabs:
         dfid = dfid.rename(columns={'ID':'Id'})
         dfid['First Name'] = np.where(dfid['Nickname'] == 'Los Angeles Rams', 'la rams', dfid['First Name'])
         dfid['First Name'] = np.where(dfid['Nickname'] == 'Los Angeles Chargers', 'la chargers', dfid['First Name'])
+        dfid['First Name'] = np.where(dfid['Nickname'] == 'New York Jets', 'ny jets', dfid['First Name'])
+        dfid['First Name'] = np.where(dfid['Nickname'] == 'New York Giants', 'ny giants', dfid['First Name'])
 
         
         dfid['City'] = dfid['First Name'].apply(lambda x: x.lower())
@@ -307,6 +309,8 @@ class Fantasylabs:
         dfid['City'] = dfid['Name'].apply(lambda x: city_dict[1][x] if list(city_dict[1].keys()).count(x)==1 else 0)
         dfid['City'] = np.where((dfid['City']=='Los Angeles')&(dfid['TeamAbbrev']=='LAR'), 'LA Rams', dfid['City'])
         dfid['City'] = np.where((dfid['City']=='Los Angeles')&(dfid['TeamAbbrev']=='LAC'), 'LA Chargers', dfid['City'])
+        dfid['City'] = np.where((dfid['City']=='New York')&(dfid['TeamAbbrev']=='NYJ'), 'NY Jets', dfid['City'])
+        dfid['City'] = np.where((dfid['City']=='New York')&(dfid['TeamAbbrev']=='NYG'), 'NY Giants', dfid['City'])
         dfid['Name'] = np.where(dfid['Position']=='D', dfid['City'], dfid['Name'])
 
         #create first name
