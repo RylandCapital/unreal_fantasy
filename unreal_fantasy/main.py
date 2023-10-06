@@ -19,7 +19,7 @@ from utils.uploader import upload
 
 '''scraping'''
 def run_scrape(date):
-    Fantasylabs(site='draftkings', sport='nfl', date='9.13.23').scrape(historical=True, delete_dups=False)
+    Fantasylabs(site='fanduel', sport='nfl', date='9.27.23').scrape(historical=True, delete_dups=False)
 
 if __name__ == "__main__":
 
@@ -154,13 +154,14 @@ if __name__ == "__main__":
             site_file='week42023'
             )\
             .optimize_upload_file(
-                roster_size=150, 
-                pct_from_opt_proj=.808,
+                roster_size=10, 
+                pct_from_opt_proj=.90, #.808
                 max_pct_own=.33,
-                other_site_min=60200, 
+                other_site_min=0, 
                 sabersim_only=False,
                 h2h=False,
-                h2h_rank=.99,
+                h2h_rank=.99, #team ownership and floor pct rank, only for H2H=True
+                min_team_sal=50000, # min team salary used, only for H2H=True
                 removals=[29816345, '94274-54604',
                            29816337, '94274-54879',
                              29816403, '94274-80001',
@@ -195,7 +196,7 @@ if __name__ == "__main__":
                                29816749, '94274-86687',
                                29816344, '94274-24849',
                                29816841, '94274-73111'],
-                     pct_from_opt_proj=.808,
+                     pct_from_opt_proj=.91,
                      max_pct_own=.33, 
-                     other_site_min_compare=0,
+                     other_site_min_compare=60200,
                      sabersim_only=False)

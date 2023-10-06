@@ -397,7 +397,7 @@ class Ticket:
 
       return upload, exposuresdf
 
-    def optimize_upload_file(self, roster_size=150, pct_from_opt_proj=.808, max_pct_own=.33, other_site_min=0, sabersim_only=False, h2h=False, h2h_rank=.99, removals=[]):
+    def optimize_upload_file(self, roster_size=150, pct_from_opt_proj=.808, max_pct_own=.33, other_site_min=0, sabersim_only=False, h2h=False, h2h_rank=.99, min_team_sal=50000, removals=[]):
 
        
       picks = self.prepare(num_top_probas=100000, removals=removals, sabersim=sabersim_only)
@@ -407,13 +407,15 @@ class Ticket:
          picks['team_floor'] = picks.groupby(level=0)['proj_floor'].sum().rank(pct=True)
          picks['team_pts/sal'] = picks.groupby(level=0)['proj_pts/sal'].sum().rank(pct=True)
          picks['team_projown'] = picks.groupby(level=0)['proj_projown'].sum().rank(pct=True)
+         picks['team_salary'] = picks.groupby(level=0)['{0}_Salary'.format(self.site)].sum()
       except: #NFL
          picks['team_+/-'] = picks.groupby(level=0)['projections_proj+/-'].sum()
          picks['team_floor'] = picks.groupby(level=0)['projections_floor'].sum().rank(pct=True)
          picks['team_pts/sal'] = picks.groupby(level=0)['projections_pts/sal'].sum().rank(pct=True)
          picks['team_projown'] = picks.groupby(level=0)['projections_projown'].sum().rank(pct=True)
+         picks['team_salary'] = picks.groupby(level=0)['{0}_Salary'.format(self.site)].sum()
       if h2h==True:
-         picks = picks[(picks['team_floor']>.99)&(picks['team_pts/sal']>.99)&(picks['team_projown']>.99)]
+         picks = picks[(picks['team_floor']>h2h_rank)&(picks['team_projown']>h2h_rank)&(picks['team_salary']>=min_team_sal)]
       #need salary arb stuff
       flip_dict = {'fanduel':'draftkings', 'draftkings':'fanduel'}
       picks['other_site_salary'] = picks.groupby(level=0)['{0}_Salary'.format(flip_dict[self.site])].sum()
