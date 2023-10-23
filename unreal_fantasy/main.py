@@ -19,11 +19,11 @@ from utils.uploader import upload
 
 '''scraping'''
 def run_scrape(date):
-    Fantasylabs(site='fanduel', sport='nfl', date='9.27.23').scrape(historical=True, delete_dups=False)
+    Fantasylabs(site='draftkings', sport='nfl', date=date).scrape(historical=True, delete_dups=True)
 
 if __name__ == "__main__":
 
-    dates = list(slates['fanduel']['nfl'].keys())
+    dates = list(slates['draftkings']['nfl'].keys())
 
     with Pool(len(dates)) as p:  
         p.map(run_scrape, dates)
@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
 '''optimizer'''
 def run_optimization(list_of_dates):
-    balanced(list_of_dates, 'nfl', 'fanduel', True, 1000, live_tag='')
+    balanced(list_of_dates, 'nfl', 'draftkings', True, 1000, live_tag='')
 
 if __name__ == "__main__":
 
@@ -50,11 +50,11 @@ if __name__ == "__main__":
 
 '''dataiku'''
 def run_build(date):
-    DataikuNFL(site='draftkings', date=date, historical=True).build()
+    DataikuNFL(site='fanduel', date=date, historical=True).build()
 
 if __name__ == "__main__":
 
-    dates = list(slates['draftkings']['nfl'].keys())
+    dates = list(slates['fanduel']['nfl'].keys())[30:]
 
     with Pool(len(dates)) as p:  
         p.map(run_build, dates)
@@ -62,7 +62,8 @@ if __name__ == "__main__":
 
 '''upload ticket creation'''
 if __name__ == "__main__":
-    upload(site='fanduel', sport='nhl', historical=True)
+    upload(site='fanduel', sport='nfl', historical=True)
+    upload(site='draftkings', sport='nfl', historical=True)
 
 ##############################################################################
 
@@ -81,15 +82,15 @@ if __name__ == "__main__":
 
 '''scraping'''
 if __name__ == "__main__":
-    Fantasylabs(site='draftkings', sport='nfl', date='9.27.23').scrape(historical=False, delete_dups=False, site_file='week42023')
+    Fantasylabs(site='draftkings', sport='nfl', date='10.18.23').scrape(historical=False, delete_dups=False, site_file='week72023')
 
 
 '''optimizer'''
 def run_optimization_live(live_tag):
-    balanced(['9.27.23'], 'nfl', 'draftkings', False, 90000, live_tag=live_tag, sabersim=False)
-    balanced(['9.27.23'], 'nfl', 'fanduel', False, 90000, live_tag=live_tag, sabersim=False)
+    #balanced(['10.18.23'], 'nfl', 'draftkings', False, 90000, live_tag=live_tag, sabersim=False)
+    balanced(['10.18.23'], 'nfl', 'fanduel', False, 45000, live_tag=live_tag, sabersim=False)
     if live_tag=='a':
-        balanced(['9.27.23'], 'nfl', 'draftkings', False, 100, live_tag='a', sabersim=True)
+        balanced(['10.18.23'], 'nfl', 'draftkings', False, 100, live_tag='a', sabersim=True)
 
 if __name__ == "__main__":
     letters = [
@@ -107,8 +108,8 @@ if __name__ == "__main__":
 
 '''dataiku'''
 def run_build_live(live_tag):
-    DataikuNFL(site='draftkings', date='9.27.23', historical=False, live_tag=live_tag).build()
-    DataikuNFL(site='fanduel', date='9.27.23', historical=False, live_tag=live_tag).build()
+    DataikuNFL(site='draftkings', date='10.18.23', historical=False, live_tag=live_tag).build()
+    DataikuNFL(site='fanduel', date='10.18.23', historical=False, live_tag=live_tag).build()
 
 if __name__ == "__main__":
 
@@ -148,30 +149,24 @@ if __name__ == "__main__":
 
 if __name__ == "__main__":
     ids = Ticket(
-            '9.27.23',
-            'draftkings', 
+            '10.18.23',
+            'fanduel', 
             'nfl', 
-            site_file='week42023'
+            site_file='week72023'
             )\
             .optimize_upload_file(
-                roster_size=10, 
-                pct_from_opt_proj=.90, #.808
-                max_pct_own=.33,
-                other_site_min=0, 
+                roster_size=2, 
+                pct_from_opt_proj=.858,
+                max_pct_own=1.00,
+                other_site_min=50100, 
                 sabersim_only=False,
                 h2h=False,
                 h2h_rank=.99, #team ownership and floor pct rank, only for H2H=True
                 min_team_sal=50000, # min team salary used, only for H2H=True
-                removals=[29816345, '94274-54604',
-                           29816337, '94274-54879',
-                             29816403, '94274-80001',
-                             29816705, '94274-56018',
-                               29817139, '94274-47870',
-                               29816821, '94274-112192',
-                               29816429, '94274-71845',
-                               29816749, '94274-86687',
-                               29816344, '94274-24849',
-                               29816841, '94274-73111'])
+                removals=[30330590, '94948-63519',
+                          30330690, '94948-45229',
+                          30330886, '94948-73048'])
+
 
 
 
@@ -181,22 +176,15 @@ if __name__ == "__main__":
 #POST SLATE REVIEW
 if __name__ == "__main__":
     PostSlate(
-            '9.27.23',
-            'draftkings', 
+            '10.18.23',
+            'fanduel', 
             'nfl', 
-            site_file='week42023'
+            site_file='week72023'
             )\
-            .anaylze(removals=[29816345, '94274-54604',
-                           29816337, '94274-54879',
-                             29816403, '94274-80001',
-                             29816705, '94274-56018',
-                               29817139, '94274-47870',
-                               29816821, '94274-112192',
-                               29816429, '94274-71845',
-                               29816749, '94274-86687',
-                               29816344, '94274-24849',
-                               29816841, '94274-73111'],
-                     pct_from_opt_proj=.91,
-                     max_pct_own=.33, 
-                     other_site_min_compare=60200,
+            .anaylze(removals=[30330590, '94948-63519',
+                          30330690, '94948-45229',
+                          30330886, '94948-73048'],
+                     pct_from_opt_proj=.808, #this will be raised higher for comparison, keep at .808
+                     max_pct_own=.50, 
+                     other_site_min_compare=50100,
                      sabersim_only=False)

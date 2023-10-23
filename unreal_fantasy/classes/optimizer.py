@@ -335,12 +335,12 @@ def balanced(strdates, sport, site, historical, count, live_tag='', sabersim=Fal
         if historical==True:
             cur_week = slates[site][sport][date]['slate_id']
             score_reference = slates[site][sport][date]['winning_score']
-            projected_floor = Optimize(sport,site, historical).projected_optimal(cur_week).projected()*.808
+            projected_floor = Optimize(sport,site, historical).projected_optimal(cur_week).projected()*.858
             hist='historical'
         else:
             cur_week = date
-            score_reference = Optimize(sport,site, historical).projected_optimal(cur_week).projected()*.808
-            projected_floor = Optimize(sport,site, historical).projected_optimal(cur_week).projected()*.808
+            score_reference = Optimize(sport,site, historical).projected_optimal(cur_week).projected()*.858
+            projected_floor = Optimize(sport,site, historical).projected_optimal(cur_week).projected()*.858
             hist='live'
         
         if sport=='nhl':

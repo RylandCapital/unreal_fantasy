@@ -202,8 +202,41 @@ class PostSlate:
 
         ticket_stats_wsitemin = postdf2_trim.loc[ticket_ids][['proba_1', 'team_actual']].iloc[:150]['team_actual'].describe()
 
-        report = pd.concat([pool_top_150_proj, pool_top_150_proba, ticket_stats, ticket_stats_wsitemin], axis=1).round(2)
-        report.columns = ['pool top 150 projd', 'pool top 150 proba', 'ticket', 'ticket w other site min']
+
+        ticket_ids = Ticket(
+            self.slate_date,
+            self.site, 
+            self.sport, 
+            site_file = self.site_file
+            )\
+            .optimize_upload_file(
+                roster_size=150, 
+                pct_from_opt_proj=pct_from_opt_proj+.05,#.808 
+                max_pct_own=max_pct_own,
+                other_site_min=other_site_min_compare, 
+                sabersim_only=sabersim_only,
+                removals=removals)
+
+        ticket_stats_wsitemin_highpfo = postdf2_trim.loc[ticket_ids][['proba_1', 'team_actual']].iloc[:150]['team_actual'].describe()
+
+        ticket_ids = Ticket(
+            self.slate_date,
+            self.site, 
+            self.sport, 
+            site_file = self.site_file
+            )\
+            .optimize_upload_file(
+                roster_size=150, 
+                pct_from_opt_proj=pct_from_opt_proj+.05,#.808 
+                max_pct_own=max_pct_own,
+                other_site_min=0, 
+                sabersim_only=sabersim_only,
+                removals=removals)
+
+        ticket_stats_whighfbo = postdf2_trim.loc[ticket_ids][['proba_1', 'team_actual']].iloc[:150]['team_actual'].describe()
+
+        report = pd.concat([pool_top_150_proj, pool_top_150_proba, ticket_stats, ticket_stats_wsitemin, ticket_stats_whighfbo, ticket_stats_wsitemin_highpfo], axis=1).round(2)
+        report.columns = ['pool top 150 projd', 'pool top 150 proba', 'ticket', 'ticket w other site min', 'ticket w higher pfo', 'ticket w other site min and higher pfo']
 
         report.loc[''] = ''
         report.loc[' '] = ''

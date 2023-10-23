@@ -162,7 +162,7 @@ class Ticket:
 
        return final[['fanduel_ArbID','fanduel_Salary','draftkings_ArbID','draftkings_Salary']]
 
-    def prepare(self, num_top_probas=100000, removals=[], sabersim=False):
+    def prepare(self, num_top_probas=150000, removals=[], sabersim=False):
         
 
         predictions = pd.read_csv('C:\\Users\\rmathews\\.unreal_fantasy\\_live_projections\\{0}_{1}.csv'.format(self.site, self.sport))
@@ -400,7 +400,7 @@ class Ticket:
     def optimize_upload_file(self, roster_size=150, pct_from_opt_proj=.808, max_pct_own=.33, other_site_min=0, sabersim_only=False, h2h=False, h2h_rank=.99, min_team_sal=50000, removals=[]):
 
        
-      picks = self.prepare(num_top_probas=100000, removals=removals, sabersim=sabersim_only)
+      picks = self.prepare(num_top_probas=150000, removals=removals, sabersim=sabersim_only)
       picks['team_proj'] = picks.groupby(level=0)['actual'].sum()
       try: #NHL
          picks['team_+/-'] = picks.groupby(level=0)['proj_proj+/-'].sum()

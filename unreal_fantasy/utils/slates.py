@@ -147,6 +147,8 @@ slates = {
         '9.13.23': {'day':'sunday', 'slate_id':62, 'winning_score':185.64, 'optimal':215.30},  #week 2 2023
         '9.20.23': {'day':'sunday', 'slate_id':63, 'winning_score':251.94, 'optimal':285.3},  #week 3 2023
         '9.27.23': {'day':'sunday', 'slate_id':64, 'winning_score':222.80, 'optimal':270.8},  #week 4 2023
+        '10.4.23': {'day':'sunday', 'slate_id':65, 'winning_score':218.64, 'optimal':245.9},  #week 5 2023
+        '10.11.23': {'day':'sunday', 'slate_id':66, 'winning_score':178.52, 'optimal':194.3},  #week 6 2023
     
     }
 
@@ -298,6 +300,8 @@ slates = {
         '9.13.23': {'day':'sunday', 'slate_id':62, 'winning_score':220.50, 'optimal':254.0},   #week 2 2023
         '9.20.23': {'day':'sunday', 'slate_id':63, 'winning_score':294.34, 'optimal':331.4},   #week 3 2023
         '9.27.23': {'day':'sunday', 'slate_id':64, 'winning_score':247.04, 'optimal':296.7},   #week 4 2023
+        '10.4.23': {'day':'sunday', 'slate_id':65, 'winning_score':270.12, 'optimal':291.2},   #week 5 2023
+        '10.11.23': {'day':'sunday', 'slate_id':66, 'winning_score':213.00, 'optimal':235.9},  #week 6 2023
         
     
     }
